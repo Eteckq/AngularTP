@@ -4,6 +4,17 @@
 
 export const environment = {
   production: false,
+  firebase: {
+    apiKey: 'AIzaSyDS396TPO0UkgkhFnoAZiNRvlnscdJE2PU',
+    authDomain: 'heroes-805f2.firebaseapp.com',
+    databaseURL:
+      'https://heroes-805f2-default-rtdb.europe-west1.firebasedatabase.app/',
+    projectId: 'heroes-805f2',
+    storageBucket: 'heroes-805f2.appspot.com',
+    messagingSenderId: '613335521676',
+    appId: '1:613335521676:web:4e28b0d82d375bce4e1ea9',
+    // measurementId: '<your-measurement-id>'
+  },
 };
 
 /*

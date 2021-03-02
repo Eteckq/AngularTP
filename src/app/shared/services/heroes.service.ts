@@ -1,42 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from '../data/hero';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
-  constructor() {}
+  heroes$: Observable<Hero[]>;
+
+  constructor(private firestore: AngularFirestore) {
+    this.heroes$ = this.firestore.collection<Hero>('heroes').valueChanges();
+  }
 
   public getHeroes(): Observable<Hero[]> {
-    return of([
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' },
-    ]);
+    return this.heroes$;
   }
 
   getHero(id: number): Observable<Hero> {
-    return of(
-      [
-        { id: 11, name: 'Dr Nice' },
-        { id: 12, name: 'Narco' },
-        { id: 13, name: 'Bombasto' },
-        { id: 14, name: 'Celeritas' },
-        { id: 15, name: 'Magneta' },
-        { id: 16, name: 'RubberMan' },
-        { id: 17, name: 'Dynama' },
-        { id: 18, name: 'Dr IQ' },
-        { id: 19, name: 'Magma' },
-        { id: 20, name: 'Tornado' },
-      ].find((hero) => hero.id === id)
-    );
+    return of({
+      id: 20,
+      name: 'Tornado',
+      damage: 15,
+      health: 15,
+      rapidity: 15,
+      strength: 5,
+    });
   }
 }
