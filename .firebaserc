@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "heroes-805f2": {
+      "hosting": {
+        "hero": [
+          "heroes-805f2"
+        ]
+      }
+    }
+  }
+}
