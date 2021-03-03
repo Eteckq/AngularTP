@@ -1,5 +1,5 @@
 export interface Hero {
-  id: number;
+  uuid?: string;
   name: string;
   strength: number;
   rapidity: number;

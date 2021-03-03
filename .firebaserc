@@ -1,9 +1,9 @@
 {
   "targets": {
-    "heroes-805f2": {
+    "heroes-96d2f": {
       "hosting": {
         "hero": [
-          "heroes-805f2"
+          "heroes-96d2f"
         ]
       }
     }

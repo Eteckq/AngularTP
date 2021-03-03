@@ -9,6 +9,8 @@ import { HeroDetailComponent } from './modules/hero-detail/hero-detail.component
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { CreateHeroComponent } from './modules/create-hero/create-hero.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +18,14 @@ import { environment } from '../environments/environment';
     HeroesComponent,
     HeroDetailComponent,
     DashboardComponent,
+    CreateHeroComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

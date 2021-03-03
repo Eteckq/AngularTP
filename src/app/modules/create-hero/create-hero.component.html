@@ -1,0 +1,37 @@
+<h2>Créer un héro</h2>
+<div>
+  <label for="hero-name">Hero name: </label>
+  <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
+  <p>Stats</p>
+
+  <label for="hero-name">Force: </label>
+  <input
+    id="hero-name"
+    type="number"
+    [(ngModel)]="hero.strength"
+    placeholder="Force"
+  />
+  <label for="hero-name">Vitesse: </label>
+  <input
+    id="hero-name"
+    type="number"
+    [(ngModel)]="hero.rapidity"
+    placeholder="Vitesse"
+  />
+  <label for="hero-name">Damage: </label>
+  <input
+    id="hero-name"
+    type="number"
+    [(ngModel)]="hero.damage"
+    placeholder="Damage"
+  />
+  <label for="hero-name">Points de vie: </label>
+  <input
+    id="hero-name"
+    type="number"
+    [(ngModel)]="hero.health"
+    placeholder="PV"
+  />
+</div>
+
+<button (click)="create()">Créer</button>

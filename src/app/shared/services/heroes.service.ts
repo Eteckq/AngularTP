@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from '../data/hero';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -9,22 +13,44 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class HeroesService {
   heroes$: Observable<Hero[]>;
 
+  private heroesCollection: AngularFirestoreCollection<Hero>;
+
   constructor(private firestore: AngularFirestore) {
-    this.heroes$ = this.firestore.collection<Hero>('heroes').valueChanges();
+    this.heroesCollection = this.firestore.collection<Hero>('heroes');
+    this.heroes$ = this.heroesCollection.valueChanges();
   }
 
   public getHeroes(): Observable<Hero[]> {
     return this.heroes$;
   }
 
-  getHero(id: number): Observable<Hero> {
-    return of({
-      id: 20,
-      name: 'Tornado',
-      damage: 15,
-      health: 15,
-      rapidity: 15,
-      strength: 5,
-    });
+  public getHero(uuid: string) {
+    this.heroesCollection
+      .get()
+      .toPromise()
+      .then((heroDoc) => {
+        return new Promise<Hero>((resolve, reject) => {
+          if (heroDoc.docs.length === 0) {
+            reject('Hero not found' + uuid);
+          } else {
+            let hero = heroDoc.docs[0].data();
+            return hero;
+          }
+        });
+      });
+  }
+
+  public createHero(hero: Hero) {
+    if (!hero.uuid) {
+      hero.uuid = uuidv4();
+    }
+    this.heroesCollection
+      .add(hero)
+      .then((e) => {
+        console.log('Hero added', hero);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
 }
