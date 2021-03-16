@@ -8,13 +8,7 @@ import { HeroesService } from '../../shared/services/heroes.service';
   styleUrls: ['./create-hero.component.scss'],
 })
 export class CreateHeroComponent implements OnInit {
-  hero: Hero = {
-    damage: 0,
-    health: 0,
-    name: '',
-    rapidity: 0,
-    strength: 0,
-  };
+  hero: Hero = new Hero()
 
   constructor(private heroesService: HeroesService) {}
 

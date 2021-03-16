@@ -4,34 +4,21 @@
   <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   <p>Stats</p>
 
-  <label for="hero-name">Force: </label>
-  <input
-    id="hero-name"
-    type="number"
-    [(ngModel)]="hero.strength"
-    placeholder="Force"
-  />
-  <label for="hero-name">Vitesse: </label>
-  <input
-    id="hero-name"
-    type="number"
-    [(ngModel)]="hero.rapidity"
-    placeholder="Vitesse"
-  />
-  <label for="hero-name">Damage: </label>
-  <input
-    id="hero-name"
-    type="number"
-    [(ngModel)]="hero.damage"
-    placeholder="Damage"
-  />
-  <label for="hero-name">Points de vie: </label>
-  <input
-    id="hero-name"
-    type="number"
-    [(ngModel)]="hero.health"
-    placeholder="PV"
-  />
+<div class="range-slider">
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.strength">
+  <input type="text" class="range-value" [(ngModel)]="hero.strength"/>
+</div>
+<div class="range-slider">
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.rapidity">
+  <input type="text" class="range-value" [(ngModel)]="hero.rapidity"/>
+</div>
+<div class="range-slider">
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.damage">
+  <input type="text" class="range-value" [(ngModel)]="hero.damage"/>
+</div>
+<div class="range-slider">
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.health">
+  <input type="text" class="range-value" [(ngModel)]="hero.health"/>
 </div>
 
 <button (click)="create()">Créer</button>

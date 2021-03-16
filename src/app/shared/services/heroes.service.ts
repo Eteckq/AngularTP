@@ -24,20 +24,22 @@ export class HeroesService {
     return this.heroes$;
   }
 
-  public getHero(uuid: string) {
-    this.heroesCollection
-      .get()
-      .toPromise()
-      .then((heroDoc) => {
-        return new Promise<Hero>((resolve, reject) => {
+  public  getHero(uuid: string) {
+    return new Promise<Hero>((resolve, reject) => {
+      this.heroesCollection
+        .get()
+        .toPromise()
+        .then((heroDoc) => {
+          
           if (heroDoc.docs.length === 0) {
             reject('Hero not found' + uuid);
           } else {
+            
             let hero = heroDoc.docs[0].data();
-            return hero;
+            resolve(hero);
           }
         });
-      });
+    });
   }
 
   public createHero(hero: Hero) {
