@@ -24,19 +24,24 @@ export class HeroesService {
     return this.heroes$;
   }
 
-  public  getHero(uuid: string) {
+  public getHero(uuid: string) {
     return new Promise<Hero>((resolve, reject) => {
       this.heroesCollection
         .get()
         .toPromise()
         .then((heroDoc) => {
-          
           if (heroDoc.docs.length === 0) {
-            reject('Hero not found' + uuid);
+            reject('No documents in DB');
           } else {
-            
-            let hero = heroDoc.docs[0].data();
-            resolve(hero);
+            let hero = heroDoc.docs
+              .filter((d) => d.data().uuid == uuid)[0]
+              .data();
+
+            if (hero) {
+              resolve(hero);
+            } else {
+              reject('Hero not found' + uuid);
+            }
           }
         });
     });
