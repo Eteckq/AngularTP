@@ -5,18 +5,22 @@
   <p>Stats</p>
 
 <div class="range-slider">
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.strength">
-  <input type="text" class="range-value" [(ngModel)]="hero.strength"/>
-</div>
-<div class="range-slider">
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.rapidity">
-  <input type="text" class="range-value" [(ngModel)]="hero.rapidity"/>
-</div>
-<div class="range-slider">
+  <label>Damage : </label>
   <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.damage">
   <input type="text" class="range-value" [(ngModel)]="hero.damage"/>
 </div>
 <div class="range-slider">
+  <label>Speed : </label>
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.speed">
+  <input type="text" class="range-value" [(ngModel)]="hero.speed"/>
+</div>
+<div class="range-slider">
+  <label>Dodge : </label>
+  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.dodge">
+  <input type="text" class="range-value" [(ngModel)]="hero.dodge"/>
+</div>
+<div class="range-slider">
+  <label>Health : </label>
   <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.health">
   <input type="text" class="range-value" [(ngModel)]="hero.health"/>
 </div>
