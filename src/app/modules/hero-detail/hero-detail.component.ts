@@ -23,8 +23,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   async getHero() {
-    const uuid = this.route.snapshot.paramMap.get('uuid');
-    
+    const uuid = this.route.snapshot.paramMap.get('id');    
     this.hero = await this.heroesService.getHero(uuid);
     
   }
