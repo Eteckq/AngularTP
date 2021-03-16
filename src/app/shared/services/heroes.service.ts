@@ -47,7 +47,7 @@ export class HeroesService {
     });
   }
 
-  public createHero(hero: Hero) {
+  public createHero(hero: any) {
     if (!hero.uuid) {
       hero.uuid = uuidv4();
     }

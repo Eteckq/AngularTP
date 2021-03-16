@@ -6,8 +6,18 @@ export class Hero {
   damage: number = 5;
   health: number = 5;
 
-
   public getLeftPoints() {
     return 40 - this.dodge - this.speed - this.damage - this.health;
+  }
+
+  public getData() {
+    return {
+      uuid: this.uuid,
+      name: this.name,
+      speed: this.speed,
+      dodge: this.dodge,
+      damage: this.damage,
+      health: this.health,
+    };
   }
 }
