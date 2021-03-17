@@ -1,4 +1,5 @@
 <h2>Modifier un héro</h2>
 <div *ngIf="hero">
   <app-hero-editor [hero]='hero'></app-hero-editor>
+  <button (click)="edit()">Modifier</button>
 </div>

@@ -37,7 +37,6 @@
 
   <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
     <p>Points restants: {{ hero.getLeftPoints() }}</p>
-    <button (click)="edit()">Modifier</button>
   </div>
 
   <ng-template #elseLeftPoints>

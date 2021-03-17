@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: "http://localhost:5005/"
+  // api_url: "http://localhost:5005/"
+  api_url: "https://api-heroes.yohangastoud.fr/"
 };
 
 /*

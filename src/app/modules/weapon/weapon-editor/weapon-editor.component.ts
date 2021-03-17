@@ -1,15 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from '../../../shared/data/hero';
 import { WeaponsService } from 'src/app/shared/services/weapons.service';
 import { Weapon } from 'src/app/shared/data/weapon';
 
 @Component({
-  selector: 'app-hero-editor',
-  templateUrl: './hero-editor.component.html',
-  styleUrls: ['./hero-editor.component.scss'],
+  selector: 'app-weapon-editor',
+  templateUrl: './weapon-editor.component.html',
+  styleUrls: ['./weapon-editor.component.scss'],
 })
-export class HeroEditorComponent {
-  @Input() hero: Hero;
+export class WeaponEditorComponent {
+  @Input() weapon: Weapon;
   weapons: Weapon[]
   id: string
 

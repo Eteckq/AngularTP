@@ -1,0 +1,37 @@
+<h2>Editeur</h2>
+<div *ngIf="weapon">
+  <label for="weapon-name">Weapon name: </label>
+  <input id="weapon-name" [(ngModel)]="weapon.name" placeholder="name" />
+  <p>Stats</p>
+
+  <div class="range-slider">
+    <label>Damage : </label>
+    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="weapon.damage">
+    {{weapon.damage}}
+  </div>
+  <div class="range-slider">
+    <label>Speed : </label>
+    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="weapon.speed">
+    {{weapon.speed}}
+  </div>
+  <div class="range-slider">
+    <label>Dodge : </label>
+    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="weapon.dodge">
+    {{weapon.dodge}}
+  </div>
+  <div class="range-slider">
+    <label>Health : </label>
+    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="weapon.health">
+    {{weapon.health}}
+  </div>
+
+
+  <div *ngIf="weapon.getDifference() === 0; else elseTemplate">
+    <p>Arme valide !</p>
+    <button (click)="edit()">Créer</button>
+  </div>
+
+  <ng-template #elseTemplate>
+    <p>Différence : {{ weapon.getDifference() }} points</p>
+  </ng-template>
+</div>

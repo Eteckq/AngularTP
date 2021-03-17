@@ -7,14 +7,13 @@
     <p>health : {{hero.health}}</p>
     <p>speed : {{hero.speed}}</p>
     <p>dodge : {{hero.dodge}}</p>
-    <p>Arme : {{ hero.weapon.name }}</p>
+    <p *ngIf="hero.weapon">Arme : {{ hero.weapon.name }}</p>
+    <p *ngIf="!hero.weapon">Pas d'arme</p>
   </div>
   <a routerLink="/heroes/edit/{{hero.id}}">
-  edit Hero
+    edit Hero
   </a>
 
-    <!--<label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />-->
 
 </div>
 <button (click)="goBack()">go back</button>

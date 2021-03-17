@@ -1,5 +1,6 @@
 <h2>Créer un héro</h2>
 <div *ngIf="hero">
   <app-hero-editor [hero]='hero'></app-hero-editor>
+  <button (click)="create()">Créer</button>
 </div>
 
