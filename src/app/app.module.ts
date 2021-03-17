@@ -12,14 +12,18 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CreateHeroComponent } from './modules/create-hero/create-hero.component';
 import {EditHeroComponent} from "./modules/edit-hero/edit-hero.component";
+import { CreateWeaponComponent } from './modules/create-weapon/create-weapon.component';
+import { WeaponsComponent } from './modules/weapons/weapons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
+    WeaponsComponent,
     HeroDetailComponent,
     DashboardComponent,
     CreateHeroComponent,
+    CreateWeaponComponent,
     EditHeroComponent,
   ],
   imports: [

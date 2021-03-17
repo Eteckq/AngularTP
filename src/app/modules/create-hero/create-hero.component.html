@@ -4,35 +4,61 @@
   <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   <p>Stats</p>
 
-<div class="range-slider">
-  <label>Damage : </label>
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.damage">
-  {{hero.damage}}
-</div>
-<div class="range-slider">
-  <label>Speed : </label>
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.speed">
-  {{hero.speed}}
-</div>
-<div class="range-slider">
-  <label>Dodge : </label>
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.dodge">
-  {{hero.dodge}}
-</div>
-<div class="range-slider">
-  <label>Health : </label>
-  <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.health">
-  {{hero.health}}
-</div>
+  <div class="range-slider">
+    <label>Damage : </label>
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.damage"
+    />
+    {{ hero.damage }}
+  </div>
+  <div class="range-slider">
+    <label>Speed : </label>
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.speed"
+    />
+    {{ hero.speed }}
+  </div>
+  <div class="range-slider">
+    <label>Dodge : </label>
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.dodge"
+    />
+    {{ hero.dodge }}
+  </div>
+  <div class="range-slider">
+    <label>Health : </label>
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.health"
+    />
+    {{ hero.health }}
+  </div>
 
+  <div *ngIf="hero.getLeftPoints() >= 0; else elseTemplate">
+    <p>Points restants: {{ hero.getLeftPoints() }}</p>
+    <button (click)="create()">Créer</button>
+  </div>
 
-<div *ngIf="hero.getLeftPoints() >= 0; else elseTemplate">
-  <p>Points restants: {{ hero.getLeftPoints() }}</p>
-<button (click)="create()">Créer</button>
+  <ng-template #elseTemplate>
+    <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
+  </ng-template>
 </div>
-
-<ng-template #elseTemplate>
-  <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
-</ng-template>
-
-

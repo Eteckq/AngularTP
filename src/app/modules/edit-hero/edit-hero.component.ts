@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./edit-hero.component.scss'],
 })
 export class EditHeroComponent implements OnInit {
-
+  hero: Hero;
 
   constructor(private heroesService: HeroesService, private route: ActivatedRoute) {}
 
