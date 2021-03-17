@@ -7,7 +7,7 @@ import {
 import { Weapon } from '../data/weapon';
 import { HttpClient } from '@angular/common/http';
 
-const API_WEAPON = 'http://localhost:3000/weapon/';
+const API_WEAPON = 'https://api-heroes.yohangastoud.fr/weapon/';
 @Injectable({
   providedIn: 'root',
 })

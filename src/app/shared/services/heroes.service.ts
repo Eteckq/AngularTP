@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from '../data/hero';
 
-const API_HERO = "http://localhost:3000/hero/"
+const API_HERO = "https://api-heroes.yohangastoud.fr/hero/"
 @Injectable({
   providedIn: 'root',
 })
