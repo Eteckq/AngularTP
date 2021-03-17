@@ -60,4 +60,16 @@ export class HeroesService {
         console.error(e);
       });
   }
+
+  public editHero(hero: any) {
+    console.log(hero);
+    /*this.heroesCollection
+      .add(hero)
+      .then((e) => {
+        console.log('Hero added', hero);
+      })
+      .catch((e) => {
+        console.error(e);
+      });*/
+  }
 }

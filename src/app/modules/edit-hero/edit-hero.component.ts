@@ -9,9 +9,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./edit-hero.component.scss'],
 })
 export class EditHeroComponent implements OnInit {
+  hero: Hero;
 
-
-  constructor(private heroesService: HeroesService, private route: ActivatedRoute) {}
+  constructor(private heroesService: HeroesService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.getHero();
@@ -21,6 +21,11 @@ export class EditHeroComponent implements OnInit {
     const uuid = this.route.snapshot.paramMap.get('id');
     this.hero = await this.heroesService.getHero(uuid);
 
+  }
+
+  edit() {
+    this.heroesService.editHero(this.hero.getData());
+    this.router.navigate(['/heroes']);
   }
 
 
