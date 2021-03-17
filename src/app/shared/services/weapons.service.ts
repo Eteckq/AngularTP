@@ -44,7 +44,6 @@ export class WeaponsService {
         .post(API_WEAPON, weapon)
         .toPromise()
         .then((res) => {
-          console.log(res);
           resolve(res);
         });
     });
@@ -56,7 +55,6 @@ export class WeaponsService {
         .put(API_WEAPON + weapon.id, weapon)
         .toPromise()
         .then((res) => {
-          console.log(res);
           resolve(res as any);
         });
     });

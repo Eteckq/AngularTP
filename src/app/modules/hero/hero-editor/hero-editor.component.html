@@ -27,13 +27,19 @@
 
   <div *ngIf="hero.weapon; else elseWeapon">
     <label>Arme : </label>
-      <input type="number" value="1" [(ngModel)]="hero.weapon.id" />
       {{ hero.weapon.name }}
   </div>
 
     <ng-template #elseWeapon>
-     <p>Ajouter une arme</p>
+     <p>Pas d'arme</p>
     </ng-template>
+
+    <div *ngIf="weapons">
+      Choisir une arme
+      <li *ngFor="let weapon of weapons" (click)="choseWeapon(weapon)">
+        {{weapon.name}}
+      </li>
+    </div>
 
   <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
     <p>Points restants: {{ hero.getLeftPoints() }}</p>

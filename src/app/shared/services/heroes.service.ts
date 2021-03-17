@@ -44,7 +44,6 @@ export class HeroesService {
         .post(API_HERO, hero)
         .toPromise()
         .then((res) => {
-          console.log(res);
           resolve(res as any);
         });
     });
@@ -56,7 +55,6 @@ export class HeroesService {
         .put(API_HERO + hero.id, hero)
         .toPromise()
         .then((res) => {
-          console.log(res);
           resolve(res as any);
         });
     });

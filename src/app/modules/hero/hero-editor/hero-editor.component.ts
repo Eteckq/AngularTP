@@ -20,4 +20,9 @@ export class HeroEditorComponent {
   async getWeapons(){
     this.weapons = await this.weaponService.getWeapons()
   }
+
+  choseWeapon(weapon: Weapon){
+    this.hero.weapon = weapon
+    
+  }
 }

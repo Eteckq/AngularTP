@@ -14,8 +14,5 @@ export class HeroesComponent implements OnInit {
 
   async ngOnInit() {
     this.heroes = await this.heroesService.getHeroes();
-     console.log(this.heroes);
-     
-      
   }
 }
