@@ -25,18 +25,22 @@
     {{hero.health}}
   </div>
 
-  <div *ngIf="hero.weapon">
+  <div *ngIf="hero.weapon; else elseWeapon">
     <label>Arme : </label>
       <input type="number" value="1" [(ngModel)]="hero.weapon.id" />
       {{ hero.weapon.name }}
   </div>
 
-  <div *ngIf="hero.getLeftPoints() >= 0; else elseTemplate">
+    <ng-template #elseWeapon>
+     <p>Ajouter une arme</p>
+    </ng-template>
+
+  <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
     <p>Points restants: {{ hero.getLeftPoints() }}</p>
     <button (click)="edit()">Modifier</button>
   </div>
 
-  <ng-template #elseTemplate>
+  <ng-template #elseLeftPoints>
     <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
   </ng-template>
 </div>
