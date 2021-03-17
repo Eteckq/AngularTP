@@ -28,7 +28,6 @@
 
   <div *ngIf="weapon.getDifference() === 0; else elseTemplate">
     <p>Arme valide !</p>
-    <button (click)="edit()">Créer</button>
   </div>
 
   <ng-template #elseTemplate>
