@@ -1,3 +1,5 @@
+import { Weapon } from "./weapon";
+
 export class Hero {
   id?: string;
   name: string = '';
@@ -5,6 +7,7 @@ export class Hero {
   speed: number = 5;
   damage: number = 5;
   health: number = 5;
+  weapon?: Weapon
 
   constructor(data?: any){
     if (!data) return
@@ -14,6 +17,7 @@ export class Hero {
     this.speed = data.speed;
     this.damage = data.damage;
     this.health = data.health;
+    this.weapon = data.weapon;
   }
 
   public getLeftPoints() {
@@ -28,6 +32,7 @@ export class Hero {
       dodge: this.dodge,
       damage: this.damage,
       health: this.health,
+      weapon: this.weapon
     };
   }
 }

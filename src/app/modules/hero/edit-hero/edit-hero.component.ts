@@ -4,7 +4,7 @@ import { HeroesService } from '../../../shared/services/heroes.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-create-hero',
+  selector: 'app-edit-hero',
   templateUrl: './edit-hero.component.html',
   styleUrls: ['./edit-hero.component.scss'],
 })
@@ -24,8 +24,8 @@ export class EditHeroComponent implements OnInit {
 
   }
 
-  edit() {
-    this.heroesService.editHero(this.hero.getData());
+  async edit() {
+    await this.heroesService.editHero(this.hero.getData());
     this.router.navigate(['/heroes']);
   }
 

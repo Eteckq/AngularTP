@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Hero } from '../data/hero';
 
-const API_HERO = "https://api-heroes.yohangastoud.fr/hero/"
+const API_HERO = environment.api_url + "hero/"
 @Injectable({
   providedIn: 'root',
 })

@@ -1,0 +1,16 @@
+<div *ngIf="weapon">
+  <h2>{{ weapon.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ weapon.id }}</div>
+  <div class="ficheStats">
+    <h3>Fiche de stats</h3>
+    <p>attaque : {{weapon.damage}}</p>
+    <p>health : {{weapon.health}}</p>
+    <p>speed : {{weapon.speed}}</p>
+    <p>dodge : {{weapon.dodge}}</p>
+  </div>
+  <a routerLink="/weapons/edit/{{weapon.id}}">
+  edit Weapon
+  </a>
+
+</div>
+<button (click)="goBack()">go back</button>

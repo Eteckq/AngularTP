@@ -5,6 +5,7 @@ import { AppRoutingModule } from "../../app-routing.module";
 import { CreateHeroComponent } from "./create-hero/create-hero.component";
 import { EditHeroComponent } from "./edit-hero/edit-hero.component";
 import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
+import { HeroEditorComponent } from "./hero-editor/hero-editor.component";
 import { HeroesComponent } from "./heroes/heroes.component";
 
 
@@ -14,6 +15,7 @@ import { HeroesComponent } from "./heroes/heroes.component";
     HeroDetailComponent,
     CreateHeroComponent,
     EditHeroComponent,
+    HeroEditorComponent,
   ],
   imports: [CommonModule, FormsModule, AppRoutingModule],
 })

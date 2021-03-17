@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/firestore';
 import { Weapon } from '../data/weapon';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-const API_WEAPON = 'https://api-heroes.yohangastoud.fr/weapon/';
+const API_WEAPON = environment.api_url + 'weapon/';
+
 @Injectable({
   providedIn: 'root',
 })
