@@ -1,10 +1,20 @@
 export class Hero {
-  uuid?: string;
+  id?: string;
   name: string = '';
   dodge: number = 5;
   speed: number = 5;
   damage: number = 5;
   health: number = 5;
+
+  constructor(data?: any){
+    if (!data) return
+     this.id = data.id;
+    this.name = data.name;
+    this.dodge = data.dodge;
+    this.speed = data.speed;
+    this.damage = data.damage;
+    this.health = data.health;
+  }
 
   public getLeftPoints() {
     return 40 - this.dodge - this.speed - this.damage - this.health;
@@ -12,7 +22,7 @@ export class Hero {
 
   public getData() {
     return {
-      uuid: this.uuid,
+      id: this.id,
       name: this.name,
       speed: this.speed,
       dodge: this.dodge,

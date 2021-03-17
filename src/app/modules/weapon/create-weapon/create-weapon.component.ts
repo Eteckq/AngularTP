@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { Weapon } from '../../shared/data/weapon';
-import { WeaponsService } from '../../shared/services/weapons.service';
+import { Weapon } from '../../../shared/data/weapon';
+import { WeaponsService } from '../../../shared/services/weapons.service';
 
 @Component({
   selector: 'app-create-weapon',

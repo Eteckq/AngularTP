@@ -1,6 +1,6 @@
 <div *ngIf="hero">
   <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ hero.uuid }}</div>
+  <div><span>id: </span>{{ hero.id }}</div>
   <div class="ficheStats">
     <h3>Fiche de stats</h3>
     <p>attaque : {{hero.damage}}</p>
@@ -8,7 +8,7 @@
     <p>speed : {{hero.speed}}</p>
     <p>dodge : {{hero.dodge}}</p>
   </div>
-  <a routerLink="/edit/{{hero.uuid}}">
+  <a routerLink="/heroes/edit/{{hero.id}}">
   edit Hero
   </a>
 

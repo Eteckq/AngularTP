@@ -1,5 +1,5 @@
 <h2>Modifier un héro</h2>
-<div>
+<div *ngIf="hero">
   <label for="hero-name">Hero name: </label>
   <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   <p>Stats</p>

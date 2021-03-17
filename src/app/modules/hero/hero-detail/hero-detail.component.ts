@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Hero } from '../../shared/data/hero';
-import { HeroesService } from '../../shared/services/heroes.service';
+import { Hero } from '../../../shared/data/hero';
+import { HeroesService } from '../../../shared/services/heroes.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -23,8 +23,8 @@ export class HeroDetailComponent implements OnInit {
   }
 
   async getHero() {
-    const uuid = this.route.snapshot.paramMap.get('id');    
-    this.hero = await this.heroesService.getHero(uuid);
+    const id = this.route.snapshot.paramMap.get('id');    
+    this.hero = await this.heroesService.getHero(id);
 
   }
 

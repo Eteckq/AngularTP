@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Weapon } from '../../shared/data/weapon';
-import { WeaponsService } from '../../shared/services/weapons.service';
+import { Weapon } from '../../../shared/data/weapon';
+import { WeaponsService } from '../../../shared/services/weapons.service';
 
 @Component({
   selector: 'app-weapons',
@@ -13,8 +13,7 @@ export class WeaponsComponent implements OnInit {
   constructor(private weaponsService: WeaponsService) {}
 
   async ngOnInit() {
-    this.weaponsService
-      .getWeapons()
-      .subscribe((weapons) => (this.weapons = weapons));
+    this.weapons = await this.weaponsService.getWeapons();
+     
   }
 }

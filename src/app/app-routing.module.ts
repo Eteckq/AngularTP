@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateHeroComponent } from './modules/create-hero/create-hero.component';
+import { CreateHeroComponent } from './modules/hero/create-hero/create-hero.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { HeroDetailComponent } from './modules/hero-detail/hero-detail.component';
-import { HeroesComponent } from './modules/heroes/heroes.component';
-import { EditHeroComponent } from './modules/edit-hero/edit-hero.component';
-import { WeaponsComponent } from './modules/weapons/weapons.component';
-import { CreateWeaponComponent } from './modules/create-weapon/create-weapon.component';
+import { HeroDetailComponent } from './modules/hero/hero-detail/hero-detail.component';
+import { HeroesComponent } from './modules/hero/heroes/heroes.component';
+import { EditHeroComponent } from './modules/hero/edit-hero/edit-hero.component';
+import { WeaponsComponent } from './modules/weapon/weapons/weapons.component';
+import { CreateWeaponComponent } from './modules/weapon/create-weapon/create-weapon.component';
 
 const routes: Routes = [
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'weapons', component: WeaponsComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes/create', component: CreateHeroComponent },
+  { path: 'weapons', component: WeaponsComponent },
   { path: 'weapons/create', component: CreateWeaponComponent },
+  { path: 'heroes', component: HeroesComponent },
+  { path: 'heroes/create', component: CreateHeroComponent },
+  { path: 'heroes/edit/:id', component: EditHeroComponent },
+  { path: 'heroes/:id', component: HeroDetailComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'edit/:id', component: EditHeroComponent },
 ];
 
 @NgModule({

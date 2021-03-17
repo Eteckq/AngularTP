@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../shared/data/hero';
-import { HeroesService } from '../../shared/services/heroes.service';
+import { Hero } from '../../../shared/data/hero';
+import { HeroesService } from '../../../shared/services/heroes.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EditHeroComponent implements OnInit {
   hero: Hero;
+  id: string
 
   constructor(private heroesService: HeroesService, private route: ActivatedRoute, private router: Router) {}
 
@@ -18,8 +19,8 @@ export class EditHeroComponent implements OnInit {
   }
 
   async getHero() {
-    const uuid = this.route.snapshot.paramMap.get('id');
-    this.hero = await this.heroesService.getHero(uuid);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.hero = await this.heroesService.getHero(this.id);
 
   }
 

@@ -1,75 +1,63 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Hero } from '../data/hero';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/firestore';
-import { v4 as uuidv4 } from 'uuid';
 
+const API_HERO = "http://localhost:3000/hero/"
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
-  heroes$: Observable<Hero[]>;
+  constructor(private http: HttpClient) {}
 
-  private heroesCollection: AngularFirestoreCollection<Hero>;
-
-  constructor(private firestore: AngularFirestore) {
-    this.heroesCollection = this.firestore.collection<Hero>('heroes');
-    this.heroes$ = this.heroesCollection.valueChanges();
-  }
-
-  public getHeroes(): Observable<Hero[]> {
-    return this.heroes$;
-  }
-
-  public getHero(uuid: string) {
-    return new Promise<Hero>((resolve, reject) => {
-      this.heroesCollection
-        .get()
+  public getHeroes(): Promise<Hero[]> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(API_HERO)
         .toPromise()
-        .then((heroDoc) => {
-          if (heroDoc.docs.length === 0) {
-            reject('No documents in DB');
-          } else {
-            let hero = heroDoc.docs
-              .filter((d) => d.data().uuid == uuid)[0]
-              .data();
+        .then((res) => {
+          let heroes: Hero[] = [];
 
-            if (hero) {
-              resolve(hero);
-            } else {
-              reject('Hero not found' + uuid);
-            }
+          for (const heroData of res as any) {
+            heroes.push(new Hero(heroData));
           }
+          resolve(heroes);
+        });
+    });
+  }
+
+  public getHero(id: string): Promise<Hero> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .get(API_HERO + id)
+        .toPromise()
+        .then((res) => {
+          resolve(new Hero(res));
         });
     });
   }
 
   public createHero(hero: any) {
-    if (!hero.uuid) {
-      hero.uuid = uuidv4();
-    }
-    this.heroesCollection
-      .add(hero)
-      .then((e) => {
-        console.log('Hero added', hero);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(API_HERO, hero)
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res as any);
+        });
+    });
   }
 
   public editHero(hero: any) {
-    console.log(hero);
-    /*this.heroesCollection
-      .add(hero)
-      .then((e) => {
-        console.log('Hero added', hero);
-      })
-      .catch((e) => {
-        console.error(e);
-      });*/
+    return new Promise((resolve, reject) => {
+      this.http
+        .put(API_HERO + hero.id, hero)
+        .toPromise()
+        .then((res) => {
+          console.log(res);
+          resolve(res as any);
+        });
+    });
   }
 }
