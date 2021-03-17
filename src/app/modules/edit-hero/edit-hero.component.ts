@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../shared/data/hero';
 import { HeroesService } from '../../shared/services/heroes.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-hero',
-  templateUrl: './create-hero.component.html',
-  styleUrls: ['./create-hero.component.scss'],
+  templateUrl: './edit-hero.component.html',
+  styleUrls: ['./edit-hero.component.scss'],
 })
-export class CreateHeroComponent implements OnInit {
-  hero: Hero = new Hero()
+export class EditHeroComponent implements OnInit {
 
-  constructor(private heroesService: HeroesService, private router: Router) {}
 
-  ngOnInit(): void {}
+  constructor(private heroesService: HeroesService, private route: ActivatedRoute) {}
 
-  create() {
-    this.heroesService.createHero(this.hero.getData());
-    this.router.navigate(['/heroes']);
+  ngOnInit(): void {
+    this.getHero();
   }
+
+  async getHero() {
+    const uuid = this.route.snapshot.paramMap.get('id');
+    this.hero = await this.heroesService.getHero(uuid);
+
+  }
+
+
 }

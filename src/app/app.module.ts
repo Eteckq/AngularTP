@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CreateHeroComponent } from './modules/create-hero/create-hero.component';
+import {EditHeroComponent} from "./modules/edit-hero/edit-hero.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CreateHeroComponent } from './modules/create-hero/create-hero.component
     HeroDetailComponent,
     DashboardComponent,
     CreateHeroComponent,
+    EditHeroComponent,
   ],
   imports: [
     BrowserModule,
