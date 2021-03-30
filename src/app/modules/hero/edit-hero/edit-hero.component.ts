@@ -32,7 +32,7 @@ export class EditHeroComponent implements OnInit {
     this.router.navigate(['/heroes']);
   }
 
-  equilibrate(leftpts) {
+  equilibrate(leftpts=this.hero.getLeftPoints()) {
     if (leftpts > 0) {
       var minstat = this.hero.damage;
       var stat = 0;
@@ -95,16 +95,22 @@ export class EditHeroComponent implements OnInit {
       this.equilibrate(leftpts + 1);
     }
   }
-  randomstat(leftpoints) {
-    console.log('leftpoints', leftpoints);
-    if (leftpoints > 0)
-      return Math.floor((Math.random() * 100) % leftpoints) + 1;
-    else return 1;
+
+  randomstat() {
+    return Math.floor((Math.random() * 100) % this.hero.getLeftPoints())
+  }
+
+  resetStats() {
+    this.hero.damage = 1;
+    this.hero.speed = 1;
+    this.hero.dodge = 1;
+    this.hero.health = 1;
   }
   random() {
-    this.hero.damage = this.randomstat(this.hero.getLeftPoints());
-    this.hero.speed = this.randomstat(this.hero.getLeftPoints());
-    this.hero.dodge = this.randomstat(this.hero.getLeftPoints());
-    this.hero.health = this.hero.getLeftPoints();
+    this.resetStats();
+    this.hero.damage += this.randomstat();
+    this.hero.speed += this.randomstat();
+    this.hero.dodge += this.randomstat();
+    this.hero.health += this.hero.getLeftPoints();
   }
 }
