@@ -10,19 +10,100 @@ import { Weapon } from 'src/app/shared/data/weapon';
 })
 export class HeroEditorComponent {
   @Input() hero: Hero;
-  weapons: Weapon[]
-  id: string
+  weapons: Weapon[];
+  id: string;
 
   constructor(private weaponService: WeaponsService) {
-    this.getWeapons()
+    this.getWeapons();
   }
 
-  async getWeapons(){
-    this.weapons = await this.weaponService.getWeapons()
+  async getWeapons() {
+    this.weapons = await this.weaponService.getWeapons();
   }
 
-  choseWeapon(weapon: Weapon){
-    this.hero.weapon = weapon
-    
+  choseWeapon(weapon: Weapon) {
+    this.hero.weapon = weapon;
+  }
+
+  equilibrate(leftpts = this.hero.getLeftPoints()) {
+    if (leftpts > 0) {
+      var minstat = this.hero.damage;
+      var stat = 0;
+      if (this.hero.speed < minstat) {
+        minstat = this.hero.speed;
+        stat = 1;
+      }
+      if (this.hero.dodge < minstat) {
+        minstat = this.hero.dodge;
+        stat = 2;
+      }
+      if (this.hero.health < minstat) {
+        minstat = this.hero.health;
+        stat = 3;
+      }
+      switch (stat) {
+        case 0:
+          this.hero.damage++;
+          break;
+        case 1:
+          this.hero.speed++;
+          break;
+        case 2:
+          this.hero.dodge++;
+          break;
+        case 3:
+          this.hero.health++;
+          break;
+      }
+      this.equilibrate(leftpts - 1);
+    } else if (leftpts < 0) {
+      var maxstat = this.hero.damage;
+      var stat = 0;
+      if (this.hero.speed > maxstat) {
+        maxstat = this.hero.speed;
+        stat = 1;
+      }
+      if (this.hero.dodge > maxstat) {
+        maxstat = this.hero.dodge;
+        stat = 2;
+      }
+      if (this.hero.health > maxstat) {
+        maxstat = this.hero.health;
+        stat = 3;
+      }
+      switch (stat) {
+        case 0:
+          this.hero.damage--;
+          break;
+        case 1:
+          this.hero.speed--;
+          break;
+        case 2:
+          this.hero.dodge--;
+          break;
+        case 3:
+          this.hero.health--;
+          break;
+      }
+      this.equilibrate(leftpts + 1);
+    }
+  }
+
+  randomstat() {
+    return Math.floor((Math.random() * 100) % this.hero.getLeftPoints());
+  }
+
+  resetStats() {
+    this.hero.damage = 1;
+    this.hero.speed = 1;
+    this.hero.dodge = 1;
+    this.hero.health = 1;
+  }
+  random() {
+    this.resetStats();
+    this.hero.damage += this.randomstat();
+    this.hero.speed += this.randomstat();
+    this.hero.dodge += this.randomstat();
+    this.hero.health += this.hero.getLeftPoints();
   }
 }

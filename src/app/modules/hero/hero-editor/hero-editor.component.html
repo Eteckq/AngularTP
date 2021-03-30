@@ -6,40 +6,72 @@
 
   <div class="range-slider">
     <label>Damage : </label>
-    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.damage">
-    {{hero.damage}}
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.damage"
+    />
+    {{ hero.damage }}
   </div>
   <div class="range-slider">
     <label>Speed : </label>
-    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.speed">
-    {{hero.speed}}
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.speed"
+    />
+    {{ hero.speed }}
   </div>
   <div class="range-slider">
     <label>Dodge : </label>
-    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.dodge">
-    {{hero.dodge}}
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.dodge"
+    />
+    {{ hero.dodge }}
   </div>
   <div class="range-slider">
     <label>Health : </label>
-    <input class="input-range" type="range" value="5" min="1" max="37" [(ngModel)]="hero.health">
-    {{hero.health}}
+    <input
+      class="input-range"
+      type="range"
+      value="5"
+      min="1"
+      max="37"
+      [(ngModel)]="hero.health"
+    />
+    {{ hero.health }}
   </div>
 
   <div *ngIf="hero.weapon; else elseWeapon">
     <label>Arme : </label>
-      {{ hero.weapon.name }}
+    {{ hero.weapon.name }}
   </div>
 
-    <ng-template #elseWeapon>
-     <p>Pas d'arme</p>
-    </ng-template>
+  <ng-template #elseWeapon>
+    <p>Pas d'arme</p>
+  </ng-template>
 
-    <div *ngIf="weapons">
-      Choisir une arme
-      <li *ngFor="let weapon of weapons" (click)="choseWeapon(weapon)">
-        {{weapon.name}}
-      </li>
+  <div *ngIf="weapons" class="weaponBlocs">
+    Choisir une arme
+    <div
+      class="weaponBloc"
+      *ngFor="let weapon of weapons"
+      (click)="choseWeapon(weapon)"
+    >
+      {{ weapon.name }}
     </div>
+  </div>
 
   <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
     <p>Points restants: {{ hero.getLeftPoints() }}</p>
@@ -48,4 +80,7 @@
   <ng-template #elseLeftPoints>
     <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
   </ng-template>
+
+  <button (click)="equilibrate()">Equilibrer le héro</button>
+  <button (click)="random()">Randomiser les stats</button>
 </div>
