@@ -10,6 +10,7 @@ import { WeaponsService } from '../../../shared/services/weapons.service';
 })
 export class CreateWeaponComponent implements OnInit {
   weapon: Weapon = new Weapon();
+  valid: boolean;
 
   constructor(private weaponsService: WeaponsService, private router: Router) {}
 
@@ -18,5 +19,9 @@ export class CreateWeaponComponent implements OnInit {
   create() {
     this.weaponsService.createWeapon(this.weapon.getData());
     this.router.navigate(['/weapons']);
+  }
+
+  checkValid(childValid) {
+    this.valid=childValid;
   }
 }

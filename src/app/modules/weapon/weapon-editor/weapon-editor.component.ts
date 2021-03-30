@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { WeaponsService } from 'src/app/shared/services/weapons.service';
 import { Weapon } from 'src/app/shared/data/weapon';
 
@@ -8,15 +8,23 @@ import { Weapon } from 'src/app/shared/data/weapon';
   styleUrls: ['./weapon-editor.component.scss'],
 })
 export class WeaponEditorComponent {
+  @Output() validateEvent = new EventEmitter<boolean>();
   @Input() weapon: Weapon;
-  weapons: Weapon[]
   id: string
+  valid: boolean
 
   constructor(private weaponService: WeaponsService) {
-    this.getWeapons()
   }
 
-  async getWeapons(){
-    this.weapons = await this.weaponService.getWeapons()
+  isValid() {
+    if(this.weapon.name == '') {
+      this.valid = false;
+    } else if (this.weapon.getDifference() != 0){
+      this.valid = false;
+    } else {
+      this.valid = true;
+    }
+    console.log(this.valid);
+    this.validateEvent.emit(this.valid);
   }
 }
