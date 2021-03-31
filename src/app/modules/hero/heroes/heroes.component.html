@@ -1,8 +1,8 @@
 <h1>Liste des héros</h1>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/heroes/{{hero.id}}">
-      {{hero.name}}
+<div class="heroes">
+  <div *ngFor="let hero of heroes">
+    <a routerLink="/heroes/{{ hero.id }}">
+      <app-hero [hero]="hero"></app-hero>
     </a>
-  </li>
-</ul>
+  </div>
+</div>
