@@ -145,6 +145,7 @@ export class HeroEditorComponent {
     this.hero.dodge += this.randomstat();
     this.hero.health += this.hero.getLeftPoints();
     this.isValid();
+    this.pickArmor()
   }
 
   isValid() {
@@ -156,5 +157,21 @@ export class HeroEditorComponent {
       this.valid = true;
     }
     this.validateEvent.emit(this.valid);
+  }
+
+  pickArmor() {
+    var diff = (this.hero.health + this.hero.damage) - (this.hero.speed + this.hero.dodge);
+    var rand = Math.random() * 100;
+    if(diff > 10) { //  super heavy
+        this.hero.armorSkin = (rand > 50) ? 'IronArmor' : 'IronPlateArmor';
+    } else if (diff > 4) {// heavy
+      this.hero.armorSkin = (rand > 50) ? 'FalconLight' : 'ChainmailLightArmor';
+    } else if(diff < -10) {// super light
+      this.hero.armorSkin = (rand > 50) ? 'HunterLightArmor' : 'HunterTunic';
+    } else if (diff < -4) {// light
+      this.hero.armorSkin = (rand > 50) ? 'FarmerClothes' : 'BanditLightArmor';
+    } else {//  balanced
+      this.hero.armorSkin = (rand > 50) ? 'LeatherJacket' : 'LeatherLightArmor';
+    }
   }
 }
