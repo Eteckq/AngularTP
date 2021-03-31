@@ -1,27 +1,39 @@
-.display {
-  .skinBox {
-    .skin {
-      position: relative;
-      height: 330px;
-      width: 250px;
-      .head {
-        position: absolute;
-        top: 0;
-        left: 36px;
-        z-index: 1;
-      }
-      .body {
-        position: absolute;
-        top: 120px;
-        left: 0;
-        z-index: 0;
-      }
-      .weapon {
-        position: absolute;
-        z-index: 1;
-        transform: rotate(-70deg);
-        top: 135px;
-        right: -30px;
+.heroCard {
+  background-color: rgb(185, 185, 185);
+  border-radius: 8px;
+  margin: 10px;
+  .header {
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    padding: 18px;
+    background-color: rgb(112, 112, 112);
+  }
+  .display {
+    .skinBox {
+      .skin {
+        margin: 10px;
+        position: relative;
+        height: 330px;
+        width: 280px;
+        .head {
+          position: absolute;
+          top: 0;
+          left: 36px;
+          z-index: 1;
+        }
+        .body {
+          position: absolute;
+          top: 120px;
+          left: 0;
+          z-index: 0;
+        }
+        .weapon {
+          position: absolute;
+          z-index: 1;
+          transform: rotate(-70deg);
+          top: 135px;
+          right: 5px;
+        }
       }
     }
   }

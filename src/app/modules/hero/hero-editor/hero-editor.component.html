@@ -1,7 +1,12 @@
 <h2>Editeur</h2>
 <div *ngIf="hero">
   <label for="hero-name">Hero name: </label>
-  <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" (change)="isValid()"/>
+  <input
+    id="hero-name"
+    [(ngModel)]="hero.name"
+    placeholder="name"
+    (change)="isValid()"
+  />
   <p>Stats</p>
 
   <div class="range-slider">
@@ -58,10 +63,8 @@
   </div>
 
   <div *ngIf="hero.weapon; else elseWeapon">
-    <label>Arme actuelle  </label>
-    <app-weapon-display
-      [weapon]="hero.weapon"
-    ></app-weapon-display>
+    <label>Arme actuelle </label>
+    <app-weapon-display [weapon]="hero.weapon"></app-weapon-display>
     <button (click)="noWeapon()">Enlever l'arme</button>
   </div>
 
@@ -69,13 +72,11 @@
     <p>Pas d'arme</p>
   </ng-template>
 
-
-
-  <div *ngIf="weapons" class="weaponBlocs">
+  <div *ngIf="weapons && hero" class="weaponBlocs">
     Choisir une arme
     <div *ngFor="let weapon of weapons">
       <app-weapon-display
-        *ngIf="weapon.id != hero.weapon.id"
+        *ngIf="!(hero.weapon && weapon.id == hero.weapon.id)"
         [weapon]="weapon"
         (click)="choseWeapon(weapon)"
       ></app-weapon-display>
