@@ -1,12 +1,35 @@
-<div class="weaponBlocs">
-  <div class="weaponBloc">
-    <h2>{{ weapon.name | uppercase }}</h2>
-    <div class="ficheStats">
-      <p>attaque : {{weapon.damage}}</p>
-      <p>health : {{weapon.health}}</p>
-      <p>speed : {{weapon.speed}}</p>
-      <p>dodge : {{weapon.dodge}}</p>
+<div class="weaponBloc">
+  <h2>{{ weapon.name | uppercase }}</h2>
+  <!-- Skin -->
+  <div class="skin">
+    <img
+      class="weapon"
+      src="/assets/Weapon/{{ weapon.skin }}.png"
+      height="84px"
+      width="136px"
+    />
+  </div>
+  <!-- Stats -->
+  <div class="stats">
+    <div>
+      <div class="stat">
+        <div class="circle">{{ weapon.damage }}</div>
+        <div class="icon">Dégats</div>
+      </div>
+      <div class="stat">
+        <div class="circle">{{ weapon.health }}</div>
+        <div class="icon">PV</div>
+      </div>
+    </div>
+    <div>
+      <div class="stat">
+        <div class="circle">{{ weapon.speed }}</div>
+        <div class="icon">Vitesse</div>
+      </div>
+      <div class="stat">
+        <div class="circle">{{ weapon.dodge }}</div>
+        <div class="icon">Esquive</div>
+      </div>
     </div>
   </div>
 </div>
-

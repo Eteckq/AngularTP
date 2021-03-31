@@ -72,14 +72,16 @@
     <p>Pas d'arme</p>
   </ng-template>
 
-  <div *ngIf="weapons && hero" class="weaponBlocs">
+  <div *ngIf="weapons && hero">
     Choisir une arme
-    <div *ngFor="let weapon of weapons">
-      <app-weapon-display
-        *ngIf="!(hero.weapon && weapon.id == hero.weapon.id)"
-        [weapon]="weapon"
-        (click)="choseWeapon(weapon)"
-      ></app-weapon-display>
+    <div class="weaponBlocs">
+      <div *ngFor="let weapon of weapons">
+        <app-weapon-display
+          *ngIf="!(hero.weapon && weapon.id == hero.weapon.id)"
+          [weapon]="weapon"
+          (click)="choseWeapon(weapon)"
+        ></app-weapon-display>
+      </div>
     </div>
   </div>
 

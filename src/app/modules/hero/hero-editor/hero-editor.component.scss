@@ -1,13 +1,6 @@
 .weaponBlocs {
   display: flex;
-  .weaponBloc {
-    cursor: pointer;
-    margin: 10px;
-    height: 100px;
-    width: 100px;
-    background-color: rgb(80, 80, 80);
-    border-radius: 10px;
-  }
+  flex-wrap: wrap;
 }
 
 .skinBox {

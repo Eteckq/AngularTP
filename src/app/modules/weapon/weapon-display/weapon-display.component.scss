@@ -1,11 +1,25 @@
-.weaponBlocs {
-  display: flex;
-  .weaponBloc {
-    cursor: pointer;
+.weaponBloc {
+  width: 200px;
+  height: 300px;
+  .stats {
     margin: 10px;
-    height: 100px;
-    width: 100px;
-    background-color: rgb(80, 80, 80);
-    border-radius: 10px;
+    font-size: 0.75em;
+    display: flex;
+    justify-content: space-between;
+    .stat {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      .circle {
+        color: black;
+        border-radius: 100000px;
+        background-color: white;
+        display: inline-block;
+        padding: 8px 11px;
+        margin-right: 8px;
+      }
+      .icon {
+      }
+    }
   }
 }
