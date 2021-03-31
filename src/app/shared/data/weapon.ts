@@ -5,7 +5,7 @@ export class Weapon {
   speed: number = -5;
   damage: number = -5;
   health: number = 5;
-  skin: string = '';
+  skin: string = 'FamilySword';
 
   constructor(data?: any) {
     if (!data) return;

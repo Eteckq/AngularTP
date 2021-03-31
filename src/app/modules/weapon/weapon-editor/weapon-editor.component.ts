@@ -36,4 +36,24 @@ export class WeaponEditorComponent {
     }
     this.validateEvent.emit(this.valid);
   }
+
+  nextWeapon() {
+    let io = skins.indexOf(this.weapon.skin);
+    let nextSkin = skins[io + 1];
+    if (nextSkin) {
+      this.weapon.skin = nextSkin;
+    } else {
+      this.weapon.skin = skins[0];
+    }
+  }
+
+  previousWeapon() {
+    let io = skins.indexOf(this.weapon.skin);
+    let previous = skins[io - 1];
+    if (previous) {
+      this.weapon.skin = previous;
+    } else {
+      this.weapon.skin = skins[skins.length - 1];
+    }
+  }
 }
