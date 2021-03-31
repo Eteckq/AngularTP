@@ -5,6 +5,7 @@ export class Weapon {
   speed: number = -5;
   damage: number = -5;
   health: number = 5;
+  skin: string = '';
 
   constructor(data?: any) {
     if (!data) return;
@@ -14,6 +15,7 @@ export class Weapon {
     this.speed = data.speed;
     this.damage = data.damage;
     this.health = data.health;
+    this.skin = data.skin;
   }
 
   public getDifference() {
@@ -28,6 +30,7 @@ export class Weapon {
       dodge: this.dodge,
       damage: this.damage,
       health: this.health,
+      skin: this.skin,
     };
   }
 }
