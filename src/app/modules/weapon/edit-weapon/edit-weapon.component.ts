@@ -34,5 +34,11 @@ export class EditWeaponComponent implements OnInit {
     this.valid=childValid;
   }
 
+  async delete() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    await this.weaponesService.deleteWeapon((this.id))
+    this.router.navigate(['/weapons']);
+  }
+
 
 }

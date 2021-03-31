@@ -16,8 +16,8 @@ export class CreateWeaponComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  create() {
-    this.weaponsService.createWeapon(this.weapon.getData());
+  async create() {
+    await this.weaponsService.createWeapon(this.weapon.getData());
     this.router.navigate(['/weapons']);
   }
 
