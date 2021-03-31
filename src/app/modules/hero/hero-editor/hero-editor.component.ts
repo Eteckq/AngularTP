@@ -25,10 +25,12 @@ export class HeroEditorComponent {
 
   choseWeapon(weapon: Weapon) {
     this.hero.weapon = weapon;
+    this.isValid();
   }
 
   noWeapon() {
     this.hero.weapon = null;
+    this.isValid();
   }
 
   equilibrate(leftpts = this.hero.getLeftPoints()) {
