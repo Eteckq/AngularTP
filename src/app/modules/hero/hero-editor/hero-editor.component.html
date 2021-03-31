@@ -82,6 +82,26 @@
     </div>
   </div>
 
+  <!-- Skin -->
+  <div class="skinBox">
+    <div class="skin">
+      <!-- Head -->
+      <img class="head" src="/assets/Head.png" height="140px" width="140px" />
+      <!-- Body -->
+      <img
+        class="body"
+        src="/assets/Armor/{{ hero.armorSkin }}.png"
+        height="200px"
+        width="200px"
+      />
+    </div>
+    <!-- Body arrows -->
+    <div class="arrows">
+      <span (click)="nextArmor()"><-</span>
+      <span (click)="previousArmor()">-></span>
+    </div>
+  </div>
+
   <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
     <p>Points restants: {{ hero.getLeftPoints() }}</p>
   </div>

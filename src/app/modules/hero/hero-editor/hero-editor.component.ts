@@ -1,7 +1,20 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../../shared/data/hero';
 import { WeaponsService } from 'src/app/shared/services/weapons.service';
 import { Weapon } from 'src/app/shared/data/weapon';
+
+const skins = [
+  'BanditLightArmor',
+  'ChainmailLightArmor',
+  'FalconLight',
+  'FarmerClothes',
+  'HunterLightArmor',
+  'HunterTunic',
+  'IronArmor',
+  'IronPlateArmor',
+  'LeatherJacket',
+  'LeatherLightArmor',
+];
 
 @Component({
   selector: 'app-hero-editor',
@@ -12,7 +25,6 @@ export class HeroEditorComponent {
   @Output() validateEvent = new EventEmitter<boolean>();
   @Input() hero: Hero;
   weapons: Weapon[];
-  id: string;
   valid: boolean;
 
   constructor(private weaponService: WeaponsService) {
@@ -21,6 +33,26 @@ export class HeroEditorComponent {
 
   async getWeapons() {
     this.weapons = await this.weaponService.getWeapons();
+  }
+
+  nextArmor() {
+    let io = skins.indexOf(this.hero.armorSkin);
+    let nextSkin = skins[io + 1];
+    if (nextSkin) {
+      this.hero.armorSkin = nextSkin;
+    } else {
+      this.hero.armorSkin = skins[0];
+    }
+  }
+
+  previousArmor() {
+    let io = skins.indexOf(this.hero.armorSkin);
+    let previous = skins[io - 1];
+    if (previous) {
+      this.hero.armorSkin = previous;
+    } else {
+      this.hero.armorSkin = skins[skins.length - 1];
+    }
   }
 
   choseWeapon(weapon: Weapon) {
@@ -93,7 +125,7 @@ export class HeroEditorComponent {
       }
       this.equilibrate(leftpts + 1);
     }
-    this.isValid()
+    this.isValid();
   }
 
   randomstat() {
@@ -112,13 +144,13 @@ export class HeroEditorComponent {
     this.hero.speed += this.randomstat();
     this.hero.dodge += this.randomstat();
     this.hero.health += this.hero.getLeftPoints();
-    this.isValid()
+    this.isValid();
   }
 
   isValid() {
-    if(this.hero.name == '') {
+    if (this.hero.name == '') {
       this.valid = false;
-    } else if (this.hero.getLeftPoints() != 0){
+    } else if (this.hero.getLeftPoints() != 0) {
       this.valid = false;
     } else {
       this.valid = true;

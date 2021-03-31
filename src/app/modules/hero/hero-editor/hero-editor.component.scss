@@ -9,3 +9,28 @@
     border-radius: 10px;
   }
 }
+
+.skinBox {
+  .skin {
+    position: relative;
+    height: 330px;
+    .head {
+      position: absolute;
+      top: 0;
+      left: 36px;
+      z-index: 1;
+    }
+    .body {
+      position: absolute;
+      top: 120px;
+      left: 0;
+      z-index: 0;
+    }
+  }
+
+  .arrows {
+    span {
+      cursor: pointer;
+    }
+  }
+}
