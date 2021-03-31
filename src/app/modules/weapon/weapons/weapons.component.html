@@ -1,8 +1,5 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let weapon of weapons">
-    <a routerLink="/weapons/{{weapon.id}}">
-      {{weapon.name}}
-    </a>
-  </li>
-</ul>
+<h2>Avaible Weapons</h2>
+<app-weapon-display
+  *ngFor="let weapon of weapons"
+  routerLink="/weapons/{{weapon.id}}"
+  [weapon]="weapon"></app-weapon-display>
