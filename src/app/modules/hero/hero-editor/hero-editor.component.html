@@ -58,8 +58,10 @@
   </div>
 
   <div *ngIf="hero.weapon; else elseWeapon">
-    <label>Arme : </label>
-    {{ hero.weapon.name }}
+    <label>Arme actuelle  </label>
+    <app-weapon-display
+      [weapon]="hero.weapon"
+    ></app-weapon-display>
     <button (click)="noWeapon()">Enlever l'arme</button>
   </div>
 
@@ -71,12 +73,12 @@
 
   <div *ngIf="weapons" class="weaponBlocs">
     Choisir une arme
-    <div
-      class="weaponBloc"
-      *ngFor="let weapon of weapons"
-      (click)="choseWeapon(weapon)"
-    >
-      {{ weapon.name }}
+    <div *ngFor="let weapon of weapons">
+      <app-weapon-display
+        *ngIf="weapon.id != hero.weapon.id"
+        [weapon]="weapon"
+        (click)="choseWeapon(weapon)"
+      ></app-weapon-display>
     </div>
   </div>
 

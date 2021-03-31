@@ -7,6 +7,7 @@ import { EditHeroComponent } from "./edit-hero/edit-hero.component";
 import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
 import { HeroEditorComponent } from "./hero-editor/hero-editor.component";
 import { HeroesComponent } from "./heroes/heroes.component";
+import {WeaponModule} from "../weapon/weapon.module";
 
 
 @NgModule({
@@ -17,6 +18,6 @@ import { HeroesComponent } from "./heroes/heroes.component";
     EditHeroComponent,
     HeroEditorComponent,
   ],
-  imports: [CommonModule, FormsModule, AppRoutingModule],
+  imports: [CommonModule, FormsModule, AppRoutingModule, WeaponModule],
 })
 export class HeroModule {}
