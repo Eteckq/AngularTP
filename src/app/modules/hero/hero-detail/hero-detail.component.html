@@ -1,19 +1,4 @@
 <div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ hero.id }}</div>
-  <div class="ficheStats">
-    <h3>Fiche de stats</h3>
-    <p>attaque : {{hero.damage}}</p>
-    <p>health : {{hero.health}}</p>
-    <p>speed : {{hero.speed}}</p>
-    <p>dodge : {{hero.dodge}}</p>
-    <p *ngIf="hero.weapon">Arme : {{ hero.weapon.name }}</p>
-    <p *ngIf="!hero.weapon">Pas d'arme</p>
-  </div>
-  <a routerLink="/heroes/edit/{{hero.id}}">
-    edit Hero
-  </a>
-
-
+  <app-hero [hero]="hero"></app-hero>
+  <button routerLink="/heroes/edit/{{ hero.id }}">Modifier</button>
 </div>
-<button (click)="goBack()">go back</button>

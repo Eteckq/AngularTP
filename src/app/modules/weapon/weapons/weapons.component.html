@@ -1,5 +1,8 @@
-<h2>Avaible Weapons</h2>
-<app-weapon-display
-  *ngFor="let weapon of weapons"
-  routerLink="/weapons/{{weapon.id}}"
-  [weapon]="weapon"></app-weapon-display>
+<h2>Available Weapons</h2>
+<div class="list">
+  <app-weapon-display
+    *ngFor="let weapon of weapons"
+    routerLink="/weapons/{{ weapon.id }}"
+    [weapon]="weapon"
+  ></app-weapon-display>
+</div>

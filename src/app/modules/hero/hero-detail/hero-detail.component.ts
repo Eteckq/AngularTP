@@ -14,8 +14,7 @@ export class HeroDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private heroesService: HeroesService,
-    private location: Location
+    private heroesService: HeroesService
   ) {}
 
   ngOnInit(): void {
@@ -23,12 +22,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   async getHero() {
-    const id = this.route.snapshot.paramMap.get('id');    
+    const id = this.route.snapshot.paramMap.get('id');
     this.hero = await this.heroesService.getHero(id);
-
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }

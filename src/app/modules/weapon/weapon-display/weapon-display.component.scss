@@ -1,6 +1,16 @@
 .weaponBloc {
   width: 200px;
-  height: 300px;
+  height: 230px;
+  background-color: rgb(119, 119, 119);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  .header {
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    padding: 18px;
+    background-color: rgb(112, 112, 112);
+  }
   .stats {
     margin: 10px;
     font-size: 0.75em;
