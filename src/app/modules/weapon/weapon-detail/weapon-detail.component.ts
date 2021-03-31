@@ -14,8 +14,7 @@ export class WeaponDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private weaponesService: WeaponsService,
-    private location: Location
+    private weaponesService: WeaponsService
   ) {}
 
   ngOnInit(): void {
@@ -23,12 +22,7 @@ export class WeaponDetailComponent implements OnInit {
   }
 
   async getWeapon() {
-    const id = this.route.snapshot.paramMap.get('id');    
+    const id = this.route.snapshot.paramMap.get('id');
     this.weapon = await this.weaponesService.getWeapon(id);
-
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }
