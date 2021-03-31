@@ -3,6 +3,19 @@ import { Hero } from '../../../shared/data/hero';
 import { WeaponsService } from 'src/app/shared/services/weapons.service';
 import { Weapon } from 'src/app/shared/data/weapon';
 
+const skins = [
+  'BanditLightArmor',
+  'ChainmailLightArmor',
+  'FalconLight',
+  'FarmerClothes',
+  'HunterLightArmor',
+  'HunterTunic',
+  'IronArmor',
+  'IronPlateArmor',
+  'LeatherJacket',
+  'LeatherLightArmor',
+];
+
 @Component({
   selector: 'app-hero-editor',
   templateUrl: './hero-editor.component.html',
@@ -11,7 +24,6 @@ import { Weapon } from 'src/app/shared/data/weapon';
 export class HeroEditorComponent {
   @Input() hero: Hero;
   weapons: Weapon[];
-  id: string;
 
   constructor(private weaponService: WeaponsService) {
     this.getWeapons();
@@ -19,6 +31,26 @@ export class HeroEditorComponent {
 
   async getWeapons() {
     this.weapons = await this.weaponService.getWeapons();
+  }
+
+  nextArmor() {
+    let io = skins.indexOf(this.hero.armorSkin);
+    let nextSkin = skins[io + 1];
+    if (nextSkin) {
+      this.hero.armorSkin = nextSkin;
+    } else {
+      this.hero.armorSkin = skins[0];
+    }
+  }
+
+  previousArmor() {
+    let io = skins.indexOf(this.hero.armorSkin);
+    let previous = skins[io - 1];
+    if (previous) {
+      this.hero.armorSkin = previous;
+    } else {
+      this.hero.armorSkin = skins[skins.length - 1];
+    }
   }
 
   choseWeapon(weapon: Weapon) {

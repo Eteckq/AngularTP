@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Weapon } from '../../../shared/data/weapon';
 import { WeaponsService } from '../../../shared/services/weapons.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-weapon',
@@ -10,19 +10,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EditWeaponComponent implements OnInit {
   weapon: Weapon;
-  id: string
-  valid: boolean
+  valid: boolean;
 
-  constructor(private weaponesService: WeaponsService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private weaponesService: WeaponsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getWeapon();
   }
 
   async getWeapon() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.weapon = await this.weaponesService.getWeapon(this.id);
-
+    let id = this.route.snapshot.paramMap.get('id');
+    this.weapon = await this.weaponesService.getWeapon(id);
   }
 
   async edit() {
@@ -31,8 +33,6 @@ export class EditWeaponComponent implements OnInit {
   }
 
   checkValid(childValid) {
-    this.valid=childValid;
+    this.valid = childValid;
   }
-
-
 }

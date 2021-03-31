@@ -7,7 +7,7 @@ export class Hero {
   speed: number = 5;
   damage: number = 5;
   health: number = 5;
-  armorSkin: string = '';
+  armorSkin: string = 'BanditLightArmor';
   weapon?: Weapon;
 
   constructor(data?: any) {
