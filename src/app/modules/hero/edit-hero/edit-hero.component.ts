@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditHeroComponent implements OnInit {
   hero: Hero;
   id: string;
+  valid: boolean;
 
   constructor(
     private heroesService: HeroesService,
@@ -30,5 +31,9 @@ export class EditHeroComponent implements OnInit {
   async edit() {
     await this.heroesService.editHero(this.hero.getData());
     this.router.navigate(['/heroes']);
+  }
+
+  checkValid(childValid) {
+    this.valid=childValid;
   }
 }

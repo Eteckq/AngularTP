@@ -1,7 +1,7 @@
 <h2>Editeur</h2>
 <div *ngIf="hero">
   <label for="hero-name">Hero name: </label>
-  <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" />
+  <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" (change)="isValid()"/>
   <p>Stats</p>
 
   <div class="range-slider">
@@ -13,6 +13,7 @@
       min="1"
       max="37"
       [(ngModel)]="hero.damage"
+      (change)="isValid()"
     />
     {{ hero.damage }}
   </div>
@@ -25,6 +26,7 @@
       min="1"
       max="37"
       [(ngModel)]="hero.speed"
+      (change)="isValid()"
     />
     {{ hero.speed }}
   </div>
@@ -37,6 +39,7 @@
       min="1"
       max="37"
       [(ngModel)]="hero.dodge"
+      (change)="isValid()"
     />
     {{ hero.dodge }}
   </div>
@@ -49,6 +52,7 @@
       min="1"
       max="37"
       [(ngModel)]="hero.health"
+      (change)="isValid()"
     />
     {{ hero.health }}
   </div>

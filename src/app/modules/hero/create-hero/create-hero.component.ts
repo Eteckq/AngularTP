@@ -10,13 +10,18 @@ import {Router} from '@angular/router';
 })
 export class CreateHeroComponent implements OnInit {
   hero: Hero = new Hero()
+  valid: boolean
 
   constructor(private heroesService: HeroesService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  create() {
-    this.heroesService.createHero(this.hero.getData());
+  async create() {
+    await this.heroesService.createHero(this.hero.getData());
     this.router.navigate(['/heroes']);
+  }
+
+  checkValid(childValid) {
+    this.valid=childValid;
   }
 }

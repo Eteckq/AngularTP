@@ -24,7 +24,6 @@ export class WeaponEditorComponent {
     } else {
       this.valid = true;
     }
-    console.log(this.valid);
     this.validateEvent.emit(this.valid);
   }
 }
