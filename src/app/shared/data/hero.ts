@@ -1,4 +1,4 @@
-import { Weapon } from "./weapon";
+import { Weapon } from './weapon';
 
 export class Hero {
   id?: string;
@@ -7,17 +7,19 @@ export class Hero {
   speed: number = 5;
   damage: number = 5;
   health: number = 5;
-  weapon?: Weapon
+  armorSkin: string = '';
+  weapon?: Weapon;
 
-  constructor(data?: any){
-    if (!data) return
-     this.id = data.id;
+  constructor(data?: any) {
+    if (!data) return;
+    this.id = data.id;
     this.name = data.name;
     this.dodge = data.dodge;
     this.speed = data.speed;
     this.damage = data.damage;
     this.health = data.health;
     this.weapon = data.weapon;
+    this.armorSkin = data.armorSkin;
   }
 
   public getLeftPoints() {
@@ -32,7 +34,8 @@ export class Hero {
       dodge: this.dodge,
       damage: this.damage,
       health: this.health,
-      weapon: this.weapon
+      weapon: this.weapon,
+      armorSkin: this.armorSkin,
     };
   }
 }

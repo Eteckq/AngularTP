@@ -1,4 +1,7 @@
 <h2>Modifier une arme</h2>
-<app-weapon-editor (validateEvent)="checkValid($event)" [weapon]='weapon'></app-weapon-editor>
+<app-weapon-editor
+  (validateEvent)="checkValid($event)"
+  [weapon]="weapon"
+></app-weapon-editor>
 <button *ngIf="valid" (click)="edit()">Modifier</button>
 <button (click)="delete()">Supprimer</button>
