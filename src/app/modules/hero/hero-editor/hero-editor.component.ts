@@ -25,6 +25,10 @@ export class HeroEditorComponent {
     this.hero.weapon = weapon;
   }
 
+  noWeapon() {
+    this.hero.weapon = null;
+  }
+
   equilibrate(leftpts = this.hero.getLeftPoints()) {
     if (leftpts > 0) {
       var minstat = this.hero.damage;

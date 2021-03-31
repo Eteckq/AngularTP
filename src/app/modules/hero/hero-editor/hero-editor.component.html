@@ -56,11 +56,14 @@
   <div *ngIf="hero.weapon; else elseWeapon">
     <label>Arme : </label>
     {{ hero.weapon.name }}
+    <button (click)="noWeapon()">Enlever l'arme</button>
   </div>
 
   <ng-template #elseWeapon>
     <p>Pas d'arme</p>
   </ng-template>
+
+
 
   <div *ngIf="weapons" class="weaponBlocs">
     Choisir une arme
