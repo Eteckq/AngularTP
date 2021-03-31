@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class EditWeaponComponent implements OnInit {
   weapon: Weapon;
   id: string
+  valid: boolean
 
   constructor(private weaponesService: WeaponsService, private route: ActivatedRoute, private router: Router) {}
 
@@ -27,6 +28,10 @@ export class EditWeaponComponent implements OnInit {
   async edit() {
     await this.weaponesService.editWeapon(this.weapon.getData());
     this.router.navigate(['/weapons']);
+  }
+
+  checkValid(childValid) {
+    this.valid=childValid;
   }
 
 
