@@ -59,4 +59,15 @@ export class WeaponsService {
         });
     });
   }
+
+  public deleteWeapon(id:string) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .delete(API_WEAPON + id)
+        .toPromise()
+        .then((res) => {
+          resolve(res);
+        });
+    });
+  }
 }

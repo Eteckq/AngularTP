@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../../shared/data/hero';
 import { WeaponsService } from 'src/app/shared/services/weapons.service';
 import { Weapon } from 'src/app/shared/data/weapon';
@@ -22,8 +22,10 @@ const skins = [
   styleUrls: ['./hero-editor.component.scss'],
 })
 export class HeroEditorComponent {
+  @Output() validateEvent = new EventEmitter<boolean>();
   @Input() hero: Hero;
   weapons: Weapon[];
+  valid: boolean;
 
   constructor(private weaponService: WeaponsService) {
     this.getWeapons();
@@ -55,6 +57,12 @@ export class HeroEditorComponent {
 
   choseWeapon(weapon: Weapon) {
     this.hero.weapon = weapon;
+    this.isValid();
+  }
+
+  noWeapon() {
+    this.hero.weapon = null;
+    this.isValid();
   }
 
   equilibrate(leftpts = this.hero.getLeftPoints()) {
@@ -70,7 +78,6 @@ export class HeroEditorComponent {
         stat = 2;
       }
       if (this.hero.health < minstat) {
-        minstat = this.hero.health;
         stat = 3;
       }
       switch (stat) {
@@ -100,7 +107,6 @@ export class HeroEditorComponent {
         stat = 2;
       }
       if (this.hero.health > maxstat) {
-        maxstat = this.hero.health;
         stat = 3;
       }
       switch (stat) {
@@ -119,6 +125,7 @@ export class HeroEditorComponent {
       }
       this.equilibrate(leftpts + 1);
     }
+    this.isValid();
   }
 
   randomstat() {
@@ -137,5 +144,17 @@ export class HeroEditorComponent {
     this.hero.speed += this.randomstat();
     this.hero.dodge += this.randomstat();
     this.hero.health += this.hero.getLeftPoints();
+    this.isValid();
+  }
+
+  isValid() {
+    if (this.hero.name == '') {
+      this.valid = false;
+    } else if (this.hero.getLeftPoints() != 0) {
+      this.valid = false;
+    } else {
+      this.valid = true;
+    }
+    this.validateEvent.emit(this.valid);
   }
 }

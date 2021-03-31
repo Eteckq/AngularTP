@@ -13,7 +13,7 @@ export class EditWeaponComponent implements OnInit {
   valid: boolean;
 
   constructor(
-    private weaponesService: WeaponsService,
+    private weaponsService: WeaponsService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -24,15 +24,21 @@ export class EditWeaponComponent implements OnInit {
 
   async getWeapon() {
     let id = this.route.snapshot.paramMap.get('id');
-    this.weapon = await this.weaponesService.getWeapon(id);
+    this.weapon = await this.weaponsService.getWeapon(id);
   }
 
   async edit() {
-    await this.weaponesService.editWeapon(this.weapon.getData());
+    await this.weaponsService.editWeapon(this.weapon.getData());
     this.router.navigate(['/weapons']);
   }
 
   checkValid(childValid) {
     this.valid = childValid;
+  }
+
+  async delete() {
+    let id = this.route.snapshot.paramMap.get('id');
+    await this.weaponsService.deleteWeapon(id);
+    this.router.navigate(['/weapons']);
   }
 }
