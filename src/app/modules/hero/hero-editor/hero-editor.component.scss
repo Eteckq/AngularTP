@@ -1,9 +1,52 @@
+.editor {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.row {
+  display: flex;
+}
+
+.bloc {
+  margin-left: 50px;
+}
+
+.title {
+  color: rgb(212, 212, 212);
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.name {
+  font-size: 1.5em;
+  input {
+    font-size: 1.25em;
+    width: 260px;
+    height: 60px;
+  }
+}
+
+.stats {
+  .range-slider {
+    margin-bottom: 15px;
+  }
+}
+
 .weaponBlocs {
   display: flex;
   flex-wrap: wrap;
+
+  .weaponBloc {
+    margin-right: 10px;
+  }
+}
+
+.weaponRender {
+  cursor: pointer;
 }
 
 .skinBox {
+  width: 200px;
   .skin {
     position: relative;
     height: 330px;
@@ -22,8 +65,15 @@
   }
 
   .arrows {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
     span {
       cursor: pointer;
+      font-size: 2em;
+      &:hover {
+        color: rgb(175, 175, 175);
+      }
     }
   }
 }

@@ -4,5 +4,16 @@
     [hero]="hero"
     (validateEvent)="checkValid($event)"
   ></app-hero-editor>
-  <button *ngIf="valid" (click)="edit()">Modifier</button>
+  <button
+    style="
+      background-color: rgb(98, 255, 98);
+      position: absolute;
+      top: 100px;
+      right: 200px;
+    "
+    *ngIf="valid"
+    (click)="edit()"
+  >
+    Valider les modifications
+  </button>
 </div>

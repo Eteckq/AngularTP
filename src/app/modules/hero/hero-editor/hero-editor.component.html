@@ -1,81 +1,127 @@
-<h2>Editeur</h2>
-<div *ngIf="hero">
-  <label for="hero-name">Hero name: </label>
-  <input
-    id="hero-name"
-    [(ngModel)]="hero.name"
-    placeholder="name"
-    (change)="isValid()"
-  />
-  <p>Stats</p>
+<div class="editor" *ngIf="hero">
+  <div class="row">
+    <div>
+      <div class="name">
+        <label class="title" for="hero-name">Nom: </label>
+        <input
+          id="hero-name"
+          [(ngModel)]="hero.name"
+          placeholder="name"
+          (change)="isValid()"
+        />
+      </div>
+      <div class="stats">
+        <p class="title">Stats</p>
 
-  <div class="range-slider">
-    <label>Damage : </label>
-    <input
-      class="input-range"
-      type="range"
-      value="5"
-      min="1"
-      max="37"
-      [(ngModel)]="hero.damage"
-      (change)="isValid()"
-    />
-    {{ hero.damage }}
-  </div>
-  <div class="range-slider">
-    <label>Speed : </label>
-    <input
-      class="input-range"
-      type="range"
-      value="5"
-      min="1"
-      max="37"
-      [(ngModel)]="hero.speed"
-      (change)="isValid()"
-    />
-    {{ hero.speed }}
-  </div>
-  <div class="range-slider">
-    <label>Dodge : </label>
-    <input
-      class="input-range"
-      type="range"
-      value="5"
-      min="1"
-      max="37"
-      [(ngModel)]="hero.dodge"
-      (change)="isValid()"
-    />
-    {{ hero.dodge }}
-  </div>
-  <div class="range-slider">
-    <label>Health : </label>
-    <input
-      class="input-range"
-      type="range"
-      value="5"
-      min="1"
-      max="37"
-      [(ngModel)]="hero.health"
-      (change)="isValid()"
-    />
-    {{ hero.health }}
-  </div>
+        <div class="range-slider">
+          <label>Damage : </label>
+          <input
+            class="input-range"
+            type="range"
+            value="5"
+            min="1"
+            max="37"
+            [(ngModel)]="hero.damage"
+            (change)="isValid()"
+          />
+          {{ hero.damage }}
+        </div>
+        <div class="range-slider">
+          <label>Speed : </label>
+          <input
+            class="input-range"
+            type="range"
+            value="5"
+            min="1"
+            max="37"
+            [(ngModel)]="hero.speed"
+            (change)="isValid()"
+          />
+          {{ hero.speed }}
+        </div>
+        <div class="range-slider">
+          <label>Dodge : </label>
+          <input
+            class="input-range"
+            type="range"
+            value="5"
+            min="1"
+            max="37"
+            [(ngModel)]="hero.dodge"
+            (change)="isValid()"
+          />
+          {{ hero.dodge }}
+        </div>
+        <div class="range-slider">
+          <label>Health : </label>
+          <input
+            class="input-range"
+            type="range"
+            value="5"
+            min="1"
+            max="37"
+            [(ngModel)]="hero.health"
+            (change)="isValid()"
+          />
+          {{ hero.health }}
+        </div>
+      </div>
+      <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
+        <p>Points restants: {{ hero.getLeftPoints() }}</p>
+      </div>
 
-  <div *ngIf="hero.weapon; else elseWeapon">
-    <label>Arme actuelle </label>
-    <app-weapon-display [weapon]="hero.weapon"></app-weapon-display>
-    <button (click)="noWeapon()">Enlever l'arme</button>
-  </div>
+      <ng-template #elseLeftPoints>
+        <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
+      </ng-template>
+    </div>
 
-  <ng-template #elseWeapon>
-    <p>Pas d'arme</p>
-  </ng-template>
+    <div class="bloc">
+      <div
+        (click)="noWeapon()"
+        class="weaponRender"
+        *ngIf="hero.weapon; else elseWeapon"
+      >
+        <label class="title">Arme actuelle </label>
+        <app-weapon-display [weapon]="hero.weapon"></app-weapon-display>
+      </div>
+
+      <ng-template #elseWeapon>
+        <p class="title">Pas d'arme</p>
+      </ng-template>
+    </div>
+
+    <!-- Skin -->
+    <div class="bloc">
+      <div class="skinBox">
+        <div class="skin">
+          <!-- Head -->
+          <img
+            class="head"
+            src="/assets/Head.png"
+            height="140px"
+            width="140px"
+          />
+          <!-- Body -->
+          <img
+            class="body"
+            src="/assets/Armor/{{ hero.armorSkin }}.png"
+            height="200px"
+            width="200px"
+          />
+        </div>
+        <!-- Body arrows -->
+        <div class="arrows">
+          <span (click)="nextArmor()">←</span>
+          <span (click)="previousArmor()">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div *ngIf="weapons && hero">
-    Choisir une arme
+    <p class="title">Choisir une arme</p>
     <div class="weaponBlocs">
-      <div *ngFor="let weapon of weapons">
+      <div class="weaponBloc" *ngFor="let weapon of weapons">
         <app-weapon-display
           *ngIf="!(hero.weapon && weapon.id == hero.weapon.id)"
           [weapon]="weapon"
@@ -85,35 +131,7 @@
     </div>
   </div>
 
-  <!-- Skin -->
-  <div class="skinBox">
-    <div class="skin">
-      <!-- Head -->
-      <img class="head" src="/assets/Head.png" height="140px" width="140px" />
-      <!-- Body -->
-      <img
-        class="body"
-        src="/assets/Armor/{{ hero.armorSkin }}.png"
-        height="200px"
-        width="200px"
-      />
-    </div>
-    <!-- Body arrows -->
-    <div class="arrows">
-      <span (click)="nextArmor()"><-</span>
-      <span (click)="previousArmor()">-></span>
-    </div>
-  </div>
-
-  <div *ngIf="hero.getLeftPoints() >= 0; else elseLeftPoints">
-    <p>Points restants: {{ hero.getLeftPoints() }}</p>
-  </div>
-
-  <ng-template #elseLeftPoints>
-    <p>Total depassé de {{ -hero.getLeftPoints() }} points</p>
-  </ng-template>
-
   <button (click)="equilibrate()">Equilibrer le héro</button>
   <button (click)="random()">Randomiser les stats</button>
-  <button (click)="pickArmor()">Choisir l'armure adapté aux stats</button>
+  <!-- <button (click)="pickArmor()">Choisir l'armure adapté aux stats</button> -->
 </div>
