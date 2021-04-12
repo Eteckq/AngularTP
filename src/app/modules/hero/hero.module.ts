@@ -20,5 +20,6 @@ import { WeaponModule } from '../weapon/weapon.module';
     HeroComponent,
   ],
   imports: [CommonModule, FormsModule, AppRoutingModule, WeaponModule],
+  exports: [HeroComponent]
 })
 export class HeroModule {}

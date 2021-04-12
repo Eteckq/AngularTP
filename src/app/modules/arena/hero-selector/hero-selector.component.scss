@@ -1,0 +1,12 @@
+.arrows {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  span {
+    cursor: pointer;
+    font-size: 2em;
+    &:hover {
+      color: rgb(175, 175, 175);
+    }
+  }
+}
