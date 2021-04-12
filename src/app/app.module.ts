@@ -7,19 +7,17 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeroModule } from './modules/hero/hero.module';
 import { WeaponModule } from './modules/weapon/weapon.module';
+import { ArenaModule } from './modules/arena/arena.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-  ],
+  declarations: [AppComponent, DashboardComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     HeroModule,
     WeaponModule,
-    
-   AppRoutingModule
+    ArenaModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
