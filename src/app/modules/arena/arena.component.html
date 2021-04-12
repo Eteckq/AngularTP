@@ -2,9 +2,17 @@
 <div class="playerBoxs">
   <!-- Player 1 -->
   <div class="playerBox">
-    <app-hero-selector></app-hero-selector>
+    <app-hero-selector
+      (validateEvent)="selectP1Hero($event)"
+    ></app-hero-selector>
   </div>
   <div class="vs">VS</div>
   <!-- Player 2 -->
-  <div class="playerBox"><app-hero-selector></app-hero-selector></div>
+  <div class="playerBox">
+    <app-hero-selector
+      (validateEvent)="selectP2Hero($event)"
+    ></app-hero-selector>
+  </div>
 </div>
+
+<div class="startBtn" (click)="startGame()">START</div>

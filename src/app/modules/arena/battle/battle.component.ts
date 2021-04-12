@@ -16,5 +16,26 @@ export class BattleComponent implements OnInit {
     this.player2 = battleService.players[1];
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.handleInputs();
+  }
+
+  handleInputs() {
+    document.addEventListener('keydown', (event) => {
+      if (event.isComposing || event.keyCode === 229) {
+        return;
+      }
+      for (const player of this.battleService.players) {
+        for (const key of player.controls) {
+          if (event.code === key) {
+            this.onKeyDown(key);
+          }
+        }
+      }
+    });
+  }
+
+  onKeyDown(key: string) {
+    console.log('Key: ' + key);
+  }
 }

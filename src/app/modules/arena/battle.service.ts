@@ -6,14 +6,14 @@ import { Player } from './player.class';
   providedIn: 'root',
 })
 export class BattleService {
-  players: Player[];
+  players: Player[] = [];
 
   constructor() {
     this.players[0] = new Player();
     this.players[1] = new Player();
 
-    this.players[0].controls = ['Z', 'Q', 'S', 'D'];
-    this.players[1].controls = ['8', '4', '5', '6'];
+    this.players[0].controls = ['KeyW', 'KeyA', 'KeyS', 'KeyD'];
+    this.players[1].controls = ['Numpad8', 'Numpad4', 'Numpad5', 'Numpad6'];
   }
 
   public setPlayerHero(index: number, hero: Hero) {

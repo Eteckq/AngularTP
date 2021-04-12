@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Hero } from '../../../shared/data/hero';
 import { HeroesService } from '../../../shared/services/heroes.service';
+import { BattleService } from '../battle.service';
 
 @Component({
   selector: 'app-hero-selector',
@@ -9,13 +11,15 @@ import { HeroesService } from '../../../shared/services/heroes.service';
 export class HeroSelectorComponent implements OnInit {
   heroes: Hero[] = [];
   hero: Hero;
-  valid: boolean;
-  constructor(private heroesService: HeroesService) {}
 
+  @Output()
+  validateEvent = new EventEmitter<Hero>();
+
+  constructor(private heroesService: HeroesService) {}
 
   ngOnInit() {
     this.getHeroes();
-    this.valid = false;
+    this.validateEvent.emit(this.hero);
   }
 
   async getHeroes() {
@@ -25,24 +29,24 @@ export class HeroSelectorComponent implements OnInit {
 
   nextHero() {
     var ind = this.heroes.indexOf(this.hero);
-    if(ind < this.heroes.length -1) {
+    if (ind < this.heroes.length - 1) {
       this.hero = this.heroes[ind + 1];
     } else {
       this.hero = this.heroes[0];
     }
+
+    this.validateEvent.emit(this.hero);
   }
 
   previousHero() {
     var ind = this.heroes.indexOf(this.hero);
 
-    if(ind >= 1) {
+    if (ind >= 1) {
       this.hero = this.heroes[ind - 1];
     } else {
-      this.hero = this.heroes[this.heroes.length -1];
+      this.hero = this.heroes[this.heroes.length - 1];
     }
-  }
 
-  validate () {
-    this.valid = !this.valid;
+    this.validateEvent.emit(this.hero);
   }
 }

@@ -1,9 +1,6 @@
- <app-hero [hero]="hero"></app-hero>
-    <!-- Body arrows -->
-    <div class="arrows">
-      <span (click)="nextHero()">←</span>
-      <span *ngIf="!valid" (click)="validate()">Valider</span>
-      <span *ngIf="valid" (click)="validate()">Annuler</span>
-      <span (click)="previousHero()">→</span>
-    </div>
-
+<app-hero [hero]="hero"></app-hero>
+<!-- Body arrows -->
+<div class="arrows">
+  <span (click)="nextHero()">←</span>
+  <span (click)="previousHero()">→</span>
+</div>
