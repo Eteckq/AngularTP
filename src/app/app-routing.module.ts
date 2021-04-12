@@ -10,6 +10,7 @@ import { CreateWeaponComponent } from './modules/weapon/create-weapon/create-wea
 import { EditWeaponComponent } from './modules/weapon/edit-weapon/edit-weapon.component';
 import { WeaponDetailComponent } from './modules/weapon/weapon-detail/weapon-detail.component';
 import { ArenaComponent } from './modules/arena/arena.component';
+import { BattleComponent } from './modules/arena/battle/battle.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'heroes/edit/:id', component: EditHeroComponent },
   { path: 'heroes/:id', component: HeroDetailComponent },
   { path: 'arena', component: ArenaComponent },
+  { path: 'arena/battle', component: BattleComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

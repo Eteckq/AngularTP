@@ -9,17 +9,14 @@ import { WeaponModule } from './modules/weapon/weapon.module';
 import { ArenaModule } from './modules/arena/arena.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-  ],
+  declarations: [AppComponent, DashboardComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     HeroModule,
     WeaponModule,
     ArenaModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
