@@ -18,6 +18,7 @@ import { WeaponModule } from './modules/weapon/weapon.module';
     HttpClientModule,
     HeroModule,
     WeaponModule,
+    
    AppRoutingModule
   ],
   providers: [],

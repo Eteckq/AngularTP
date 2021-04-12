@@ -8,8 +8,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroEditorComponent } from './hero-editor/hero-editor.component';
 import { HeroComponent } from './hero/hero.component';
 import { HeroesComponent } from './heroes/heroes.component';
-import {WeaponModule} from "../weapon/weapon.module";
-
+import { WeaponModule } from '../weapon/weapon.module';
 
 @NgModule({
   declarations: [

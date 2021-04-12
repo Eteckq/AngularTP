@@ -9,6 +9,7 @@ import { WeaponsComponent } from './modules/weapon/weapons/weapons.component';
 import { CreateWeaponComponent } from './modules/weapon/create-weapon/create-weapon.component';
 import { EditWeaponComponent } from './modules/weapon/edit-weapon/edit-weapon.component';
 import { WeaponDetailComponent } from './modules/weapon/weapon-detail/weapon-detail.component';
+import { ArenaComponent } from './modules/arena/arena.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'heroes/create', component: CreateHeroComponent },
   { path: 'heroes/edit/:id', component: EditHeroComponent },
   { path: 'heroes/:id', component: HeroDetailComponent },
+  { path: 'arena', component: ArenaComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 
