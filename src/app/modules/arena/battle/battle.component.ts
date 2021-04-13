@@ -12,21 +12,34 @@ export class BattleComponent implements OnInit {
   player1: Player;
   player2: Player;
 
+
+
   constructor(private battleService: BattleService, router: Router) {
     this.player1 = battleService.players[0];
     this.player2 = battleService.players[1];
 
-    if (!this.player1.hero || !this.player2.hero){
+    if (!this.player1.hero || !this.player2.hero) {
       router.navigate(['/arena'])
     }
-    
+
+    this.setupPlayers()
+
   }
 
-  ngOnInit(): void {
+  setupPlayers () {
+    for (let player of [this.player1, this.player2]) {
+      player.health = player.hero.health * 10
+      player.cooldown = 1
+      player.startInterval()
+    }
+
+  }
+
+  ngOnInit (): void {
     this.handleInputs();
   }
 
-  handleInputs() {
+  handleInputs () {
     document.addEventListener('keydown', (event) => {
       if (event.isComposing || event.keyCode === 229) {
         return;
@@ -34,14 +47,12 @@ export class BattleComponent implements OnInit {
       for (const player of this.battleService.players) {
         for (const key of player.controls) {
           if (event.code === key) {
-            this.onKeyDown(key);
+            player.onKeyDown(key);
           }
         }
       }
     });
   }
 
-  onKeyDown(key: string) {
-    console.log('Key: ' + key);
-  }
+
 }

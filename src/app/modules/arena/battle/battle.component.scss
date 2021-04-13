@@ -22,10 +22,34 @@
 
   }
 
+
+
   .display {
     position: absolute;
 
+    .combo {
+      display: flex;
 
+      .key {
+        font-size: 25px;
+        background-color: white;
+        border-radius: 8px;
+        color: black;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        margin: 5px;
+
+        &.highlight {
+          background-color: rgb(221, 255, 28);
+        }
+
+        &.red {
+          background-color: rgb(255, 55, 37);
+        }
+      }
+
+    }
 
     &.left {
       left: 328px;
