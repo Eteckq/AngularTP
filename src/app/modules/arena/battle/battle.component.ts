@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BattleService } from '../battle.service';
 import { Player } from '../player.class';
@@ -8,7 +8,7 @@ import { Player } from '../player.class';
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.scss'],
 })
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
   player1: Player;
   player2: Player;
 
@@ -36,22 +36,24 @@ export class BattleComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.handleInputs();
+    document.addEventListener('keydown', this.handleInputs);
+  }
+  ngOnDestroy (): void {
+    document.removeEventListener('keydown', this.handleInputs)
   }
 
-  handleInputs () {
-    document.addEventListener('keydown', (event) => {
-      if (event.isComposing || event.keyCode === 229) {
-        return;
-      }
-      for (const player of this.battleService.players) {
-        for (const key of player.controls) {
-          if (event.code === key) {
-            player.onKeyDown(key);
-          }
+
+  handleInputs = (event) => {
+    if (event.isComposing || event.keyCode === 229) {
+      return;
+    }
+    for (const player of this.battleService.players) {
+      for (const key of player.controls) {
+        if (event.code === key) {
+          player.onKeyDown(key);
         }
       }
-    });
+    }
   }
 
 
