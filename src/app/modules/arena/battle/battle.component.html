@@ -16,7 +16,8 @@
                         <p class="key"
                             [ngClass]="{'highlight': i < player1.currentKeyCombo, 'red': player1.cooldown > 0, 'green': player1.successCombo}">
                             {{key
-                            | keyTranslate}}</p>
+                            | keyTranslate}} {{key |
+                            arrowTranslate}}</p>
                     </div>
                 </div>
                 <!-- Skin -->
@@ -52,7 +53,8 @@
                         <p class="key"
                             [ngClass]="{'highlight': i < player2.currentKeyCombo, 'red': player2.cooldown > 0, 'green': player2.successCombo}">
                             {{key |
-                            keyTranslate}}</p>
+                            keyTranslate}} {{key |
+                            arrowTranslate}}</p>
                     </div>
                 </div>
                 <!-- Skin -->

@@ -15,3 +15,19 @@ export class KeyTranslatePipe implements PipeTransform {
         }
     }
 }
+
+@Pipe({ name: 'arrowTranslate' })
+export class ArrowTranslatePipe implements PipeTransform {
+    transform (value: string): string {
+        switch (value) {
+            case 'KeyW': return '↑';
+            case 'KeyA': return '←';
+            case 'KeyS': return '↓';
+            case 'KeyD': return '→';
+            case 'Numpad8': return '↑';
+            case 'Numpad4': return '←';
+            case 'Numpad5': return '↓';
+            case 'Numpad6': return '→';
+        }
+    }
+}

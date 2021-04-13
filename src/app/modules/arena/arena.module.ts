@@ -6,10 +6,10 @@ import { ArenaComponent } from './arena.component';
 import { BattleComponent } from './battle/battle.component';
 import { HeroSelectorComponent } from './hero-selector/hero-selector.component';
 import { HeroModule } from "../hero/hero.module";
-import { KeyTranslatePipe } from 'src/app/shared/pipes/key-translate.pipe';
+import { ArrowTranslatePipe, KeyTranslatePipe } from 'src/app/shared/pipes/key-translate.pipe';
 
 @NgModule({
-  declarations: [ArenaComponent, HeroSelectorComponent, BattleComponent, KeyTranslatePipe],
+  declarations: [ArenaComponent, HeroSelectorComponent, BattleComponent, KeyTranslatePipe, ArrowTranslatePipe],
   imports: [CommonModule, FormsModule, AppRoutingModule, HeroModule],
 })
 export class ArenaModule { }

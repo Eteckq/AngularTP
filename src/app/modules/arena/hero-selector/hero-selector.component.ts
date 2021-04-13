@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Hero } from '../../../shared/data/hero';
 import { HeroesService } from '../../../shared/services/heroes.service';
-import { BattleService } from '../battle.service';
 
 @Component({
   selector: 'app-hero-selector',
@@ -15,19 +14,19 @@ export class HeroSelectorComponent implements OnInit {
   @Output()
   validateEvent = new EventEmitter<Hero>();
 
-  constructor(private heroesService: HeroesService) {}
+  constructor(private heroesService: HeroesService) { }
 
-  ngOnInit() {
+  ngOnInit () {
     this.getHeroes();
   }
 
-  async getHeroes() {
+  async getHeroes () {
     this.heroes = await this.heroesService.getHeroes();
     this.hero = this.heroes[0];
     this.validateEvent.emit(this.hero);
   }
 
-  nextHero() {
+  nextHero () {
     var ind = this.heroes.indexOf(this.hero);
     if (ind < this.heroes.length - 1) {
       this.hero = this.heroes[ind + 1];
@@ -38,7 +37,7 @@ export class HeroSelectorComponent implements OnInit {
     this.validateEvent.emit(this.hero);
   }
 
-  previousHero() {
+  previousHero () {
     var ind = this.heroes.indexOf(this.hero);
 
     if (ind >= 1) {
