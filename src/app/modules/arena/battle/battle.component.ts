@@ -11,12 +11,14 @@ import { Player } from '../player.class';
 export class BattleComponent implements OnInit {
   player1: Player;
   player2: Player;
+  arrow:boolean
 
 
 
   constructor(private battleService: BattleService, router: Router) {
     this.player1 = battleService.players[0];
     this.player2 = battleService.players[1];
+    this.arrow = battleService.withArrows;
 
     if (!this.player1.hero || !this.player2.hero) {
       router.navigate(['/arena'])
