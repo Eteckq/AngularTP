@@ -6,6 +6,9 @@ export class Player {
   hero: Hero;
   controls: string[];
   health: number = 0
+  damage: number = 0
+  speed: number = 0
+  dodge: number = 0
 
   currentKeyCombo: number = 0
   keyCombo: string[] = []
@@ -71,5 +74,13 @@ export class Player {
 
   getRandomKey () {
     return this.controls[Math.floor(Math.random() * this.controls.length)];
+  }
+
+  attaque(heroAttaquer:Player) {
+
+    if(Math.random() * 100 > heroAttaquer.dodge) {
+      heroAttaquer.health -= this.damage;
+    }
+    this.successCombo = false;
   }
 }

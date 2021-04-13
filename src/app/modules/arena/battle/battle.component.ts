@@ -28,9 +28,23 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   }
 
+  statsPlayer(player:Player) {
+    player.health = (player.hero.health + player.hero.weapon.health) * 2;
+    player.speed = player.hero.speed + player.hero.weapon.speed;
+    player.damage = player.hero.damage + player.hero.weapon.damage;
+    player.dodge = player.hero.dodge + player.hero.weapon.dodge;
+
+    if(player.health <= 0 ) player.health = 2;
+    if(player.speed <= 0 ) player.speed = 1;
+    if(player.dodge <= 0 ) player.dodge = 1;
+    if(player.damage <= 0 ) player.damage = 1;
+
+  }
+
+
   setupPlayers () {
     for (let player of [this.player1, this.player2]) {
-      player.health = player.hero.health * 10
+      this.statsPlayer(player);
       player.cooldown = 1
       player.startInterval()
     }
@@ -53,6 +67,10 @@ export class BattleComponent implements OnInit, OnDestroy {
       for (const key of player.controls) {
         if (event.code === key) {
           player.onKeyDown(key);
+          if(player.successCombo) {
+            if(player === this.player1)player.attaque(this.player2);
+            else player.attaque(this.player1);
+          }
         }
       }
     }
