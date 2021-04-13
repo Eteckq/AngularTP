@@ -174,4 +174,5 @@ export class HeroEditorComponent {
       this.hero.armorSkin = (rand > 50) ? 'LeatherJacket' : 'LeatherLightArmor';
     }
   }
+
 }

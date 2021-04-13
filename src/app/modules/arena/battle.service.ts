@@ -7,6 +7,7 @@ import { Player } from './player.class';
 })
 export class BattleService {
   players: Player[] = [];
+  withArrows: boolean;
 
   constructor() {
     this.players[0] = new Player();

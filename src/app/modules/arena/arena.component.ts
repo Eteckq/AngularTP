@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./arena.component.scss'],
 })
 export class ArenaComponent {
-  constructor(private battleService: BattleService, private router: Router) {}
+  withArrow:boolean
+  constructor(private battleService: BattleService, private router: Router) {
+    this.withArrow = false;
+  }
 
   selectP1Hero(hero: Hero) {
     this.battleService.setPlayerHero(0, hero);
@@ -22,5 +25,6 @@ export class ArenaComponent {
 
   startGame() {
     this.router.navigate(['/arena/battle']);
+    this.battleService.withArrows = this.withArrow;
   }
 }
