@@ -14,6 +14,8 @@ export class Player {
 
   colldownInterval: any
 
+  successCombo: boolean
+
   cooldownOver () {
     this.setNewCombo()
   }
@@ -29,6 +31,7 @@ export class Player {
   }
 
   setNewCombo () {
+    this.successCombo = false
     this.keyCombo = []
     this.currentKeyCombo = 0
     for (let i = 0; i < this.getRandomNumberOfKeys(); i++) {
@@ -43,6 +46,12 @@ export class Player {
 
     if (key === this.keyCombo[this.currentKeyCombo]) {
       this.currentKeyCombo++
+
+      if (this.currentKeyCombo === this.keyCombo.length) {
+        this.cooldown = 0.5
+        this.startInterval()
+        this.successCombo = true
+      }
     } else {
       this.cooldown = 2
       this.startInterval()

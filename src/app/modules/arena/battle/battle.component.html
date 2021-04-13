@@ -14,7 +14,8 @@
                 <div class="combo">
                     <div *ngFor="let key of player1.keyCombo; index as i">
                         <p class="key"
-                            [ngClass]="{'highlight': i < player1.currentKeyCombo, 'red': player1.cooldown > 0}">{{key
+                            [ngClass]="{'highlight': i < player1.currentKeyCombo, 'red': player1.cooldown > 0, 'green': player1.successCombo}">
+                            {{key
                             | keyTranslate}}</p>
                     </div>
                 </div>
@@ -49,7 +50,8 @@
                 <div class="combo">
                     <div *ngFor="let key of player2.keyCombo; index as i">
                         <p class="key"
-                            [ngClass]="{'highlight': i < player2.currentKeyCombo, 'red': player2.cooldown > 0}">{{key |
+                            [ngClass]="{'highlight': i < player2.currentKeyCombo, 'red': player2.cooldown > 0, 'green': player2.successCombo}">
+                            {{key |
                             keyTranslate}}</p>
                     </div>
                 </div>
