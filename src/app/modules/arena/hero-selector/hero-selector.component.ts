@@ -19,12 +19,12 @@ export class HeroSelectorComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
-    this.validateEvent.emit(this.hero);
   }
 
   async getHeroes() {
     this.heroes = await this.heroesService.getHeroes();
     this.hero = this.heroes[0];
+    this.validateEvent.emit(this.hero);
   }
 
   nextHero() {

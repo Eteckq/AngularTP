@@ -1,1 +1,57 @@
-<div class="arena"></div>
+<div class="arena">
+
+    <!-- P1 -->
+    <div>
+        <!-- Health Bar -->
+        <div class="healthbar left">
+            PV: 0/100
+        </div>
+        <!-- Character -->
+        <div>
+            <div class="display left">
+                <!-- Skin -->
+                <div class="skinBox">
+                    <div class="skin">
+                        <!-- Head -->
+                        <img class="head" src="/assets/Head.png" height="140px" width="140px" />
+                        <!-- Body -->
+                        <img class="body" src="/assets/Armor/{{ player1.hero.armorSkin }}.png" height="200px"
+                            width="200px" />
+                        <!-- Weapon -->
+                        <img *ngIf="player1.hero.weapon" class="weapon"
+                            src="/assets/Weapon/{{ player1.hero.weapon.skin }}.png" height="84px" width="136px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- P2 -->
+    <div>
+        <!-- Health Bar -->
+        <div class="healthbar right">
+            PV: 0/100
+        </div>
+        <!-- Character -->
+        <div>
+            <div class="display right flip">
+                <!-- Skin -->
+                <div class="skinBox">
+                    <div class="skin">
+                        <!-- Head -->
+                        <img class="head" src="/assets/Head.png" height="140px" width="140px" />
+                        <!-- Body -->
+                        <img class="body" src="/assets/Armor/{{ player1.hero.armorSkin }}.png" height="200px"
+                            width="200px" />
+                        <!-- Weapon -->
+                        <img *ngIf="player1.hero.weapon" class="weapon"
+                            src="/assets/Weapon/{{ player1.hero.weapon.skin }}.png" height="84px" width="136px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

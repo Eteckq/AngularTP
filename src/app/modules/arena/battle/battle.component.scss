@@ -1,8 +1,79 @@
 .arena {
   width: 100vw;
   height: 85vh;
+  position: relative;
 
   background-image: url("/assets/Images/arena.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
+
+  .healthbar {
+    position: relative;
+    width: 20vw;
+
+    &.left {
+      position: absolute;
+      left: 0;
+    }
+
+    &.right {
+      position: absolute;
+      right: 0;
+    }
+
+  }
+
+  .display {
+    position: absolute;
+
+
+
+    &.left {
+      left: 328px;
+      bottom: 112px;
+    }
+
+    &.right {
+      right: 368px;
+      bottom: 112px;
+    }
+
+    &.flip {
+      .skinBox {
+        transform: scaleX(-1);
+      }
+    }
+
+    .skinBox {
+      .skin {
+        margin: 10px;
+        position: relative;
+        height: 330px;
+        width: 280px;
+
+        .head {
+          position: absolute;
+          top: 0;
+          left: 36px;
+          z-index: 1;
+        }
+
+        .body {
+          position: absolute;
+          top: 120px;
+          left: 0;
+          z-index: 0;
+        }
+
+        .weapon {
+          position: absolute;
+          z-index: 1;
+          transform: rotate(-70deg);
+          top: 135px;
+          right: 5px;
+        }
+      }
+    }
+
+
+  }
 }

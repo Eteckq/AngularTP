@@ -8,7 +8,7 @@ import { HeroSelectorComponent } from './hero-selector/hero-selector.component';
 import {HeroModule} from "../hero/hero.module";
 
 @NgModule({
-  declarations: [ArenaComponent, HeroSelectorComponent],
+  declarations: [ArenaComponent, HeroSelectorComponent, BattleComponent],
   imports: [CommonModule, FormsModule, AppRoutingModule, HeroModule],
 })
 export class ArenaModule {}
