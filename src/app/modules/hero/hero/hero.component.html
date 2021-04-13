@@ -8,22 +8,12 @@
     <div class="skinBox">
       <div class="skin">
         <!-- Head -->
-        <img class="head" src="/assets/Head.png" height="140px" width="140px" />
+        <img class="head" src="./assets/Head.png" height="140px" width="140px" />
         <!-- Body -->
-        <img
-          class="body"
-          src="/assets/Armor/{{ hero.armorSkin }}.png"
-          height="200px"
-          width="200px"
-        />
+        <img class="body" src="./assets/Armor/{{ hero.armorSkin }}.png" height="200px" width="200px" />
         <!-- Weapon -->
-        <img
-          *ngIf="hero.weapon"
-          class="weapon"
-          src="/assets/Weapon/{{ hero.weapon.skin }}.png"
-          height="84px"
-          width="136px"
-        />
+        <img *ngIf="hero.weapon" class="weapon" src="./assets/Weapon/{{ hero.weapon.skin }}.png" height="84px"
+          width="136px" />
       </div>
     </div>
 
