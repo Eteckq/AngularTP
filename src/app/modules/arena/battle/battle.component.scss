@@ -10,7 +10,6 @@
 
   .healthbar {
     position: relative;
-    width: 20vw;
 
     &.left {
       position: absolute;
@@ -27,6 +26,8 @@
     position: absolute;
 
     .combo {
+      position: absolute;
+      top: -50px;
       display: flex;
 
       .key {
@@ -58,12 +59,19 @@
 
     &.left {
       left: 328px;
-      bottom: 112px;
+      bottom: 90px;
+
+      .combo {
+        left: -50px;
+      }
     }
 
     &.right {
       right: 368px;
-      bottom: 112px;
+      bottom: 90px;
+      .combo {
+        right: -50px;
+      }
     }
 
     &.flip {
