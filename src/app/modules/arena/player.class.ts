@@ -51,9 +51,9 @@ export class Player {
       this.currentKeyCombo++
 
       if (this.currentKeyCombo === this.keyCombo.length) {
+        this.successCombo = true
         this.cooldown = 0.5
         this.startInterval()
-        this.successCombo = true
       }
     } else {
       this.cooldown = 2
@@ -82,5 +82,9 @@ export class Player {
       heroAttaquer.health -= this.damage;
     }
     this.successCombo = false;
+    if( heroAttaquer.health <= 0) {
+      heroAttaquer.health = 0;
+
+    }
   }
 }
