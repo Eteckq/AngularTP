@@ -55,9 +55,13 @@ export class BattleComponent implements OnInit, OnDestroy {
     document.addEventListener('keydown', this.handleInputs);
   }
   ngOnDestroy (): void {
-    document.removeEventListener('keydown', this.handleInputs)
+    this.removeListeners();
   }
 
+  removeListeners () {
+    document.removeEventListener('keydown', this.handleInputs)
+
+  }
 
   handleInputs = (event) => {
     if (event.isComposing || event.keyCode === 229) {
@@ -79,7 +83,10 @@ export class BattleComponent implements OnInit, OnDestroy {
   }
 
   winner(player: Player) {
-    console.log('The winner is : ' , player)
+    var windiv = document.getElementById('winner');
+    windiv.innerText += 'The winner is : ' + player.hero.name;
+    windiv.style.visibility = 'visible';
+    this.removeListeners();
   }
 
 

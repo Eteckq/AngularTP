@@ -23,7 +23,13 @@
     }
 
   }
-
+  #winner {
+    color: black;
+    position: absolute;
+    left: 35%;
+    font-size: 50px;
+    visibility: hidden;
+  }
 
 
   .display {
