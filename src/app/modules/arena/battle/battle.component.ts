@@ -68,12 +68,18 @@ export class BattleComponent implements OnInit, OnDestroy {
         if (event.code === key) {
           player.onKeyDown(key);
           if(player.successCombo) {
-            if(player === this.player1)player.attaque(this.player2);
-            else player.attaque(this.player1);
+              var attacked = (player === this.player1) ? this.player2 : this.player1;
+              if( player.attaque(attacked) ) {
+                this.winner(player);
+              }
           }
         }
       }
     }
+  }
+
+  winner(player: Player) {
+    console.log('The winner is : ' , player)
   }
 
 
