@@ -82,9 +82,6 @@ export class Player {
       heroAttaquer.health -= this.damage;
     }
     this.successCombo = false;
-    if( heroAttaquer.health <= 0) {
-      heroAttaquer.health = 0;
-
-    }
+    return heroAttaquer.health <= 0;
   }
 }
