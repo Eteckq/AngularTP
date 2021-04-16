@@ -23,13 +23,9 @@ export class HealthBarComponent {
 
   constructor() {}
 
-  ngAfterViewInit() {
-    console.log(this.bar);
-  }
-
   public applyDamage(amout: number) {
-    var total = this.hit.nativeElement.data('total'),
-      value = this.hit.nativeElement.data('value');
+    var total = this.healthBar.nativeElement.dataset['total'],
+      value = this.healthBar.nativeElement.dataset['value'];
 
     var newValue = value - amout;
     // calculate the percentage of the total width
@@ -37,12 +33,12 @@ export class HealthBarComponent {
     var hitWidth = (amout / value) * 100 + '%';
 
     // show hit bar and set the width
-    this.hit.nativeElement.css('width', hitWidth);
-    this.healthBar.nativeElement.data('value', newValue);
+    this.hit.nativeElement.style.width = hitWidth;
+    this.healthBar.nativeElement.dataset['value'] = newValue;
 
-    setTimeout(function () {
-      this.hit.nativeElement.css({ width: '0' });
-      this.bar.nativeElement.css('width', barWidth + '%');
-    }, 500);
+    setTimeout(() => {
+      this.hit.nativeElement.style.width = '0';
+      this.bar.nativeElement.style.width = barWidth + '%';
+    }, 300);
   }
 }
