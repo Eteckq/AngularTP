@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 
@@ -19,15 +20,36 @@ export class HealthBarComponent {
   @ViewChild('hit') hit: ElementRef;
 
   @Input()
-  health: number;
+  health: number = 100;
+
+  @Input()
+  maxHealth: number = 100;
 
   constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.maxHealth) {
+      return;
+    }
+    if (changes.health) {
+      this.applyDamage(
+        changes.health.previousValue - changes.health.currentValue
+      );
+    }
+
+    if (this.health < 0) {
+      this.health = 0;
+    }
+  }
 
   public applyDamage(amout: number) {
     var total = this.healthBar.nativeElement.dataset['total'],
       value = this.healthBar.nativeElement.dataset['value'];
 
     var newValue = value - amout;
+    if (newValue < 0) {
+      newValue = 0;
+    }
     // calculate the percentage of the total width
     var barWidth = (newValue / total) * 100;
     var hitWidth = (amout / value) * 100 + '%';
