@@ -10,7 +10,6 @@
 
   .healthbar {
     position: relative;
-    width: 20vw;
 
     &.left {
       position: absolute;
@@ -21,7 +20,6 @@
       position: absolute;
       right: 0;
     }
-
   }
   #winner {
     color: black;
@@ -36,17 +34,22 @@
     position: absolute;
 
     .combo {
+      position: absolute;
+      top: -50px;
       display: flex;
 
       .key {
-        font-size: 25px;
         background-color: white;
         border-radius: 8px;
-        color: black;
         height: 50px;
         width: 50px;
         text-align: center;
         margin: 5px;
+
+        span {
+          font-size: 25px;
+          color: black;
+        }
 
         &.highlight {
           background-color: rgb(221, 255, 28);
@@ -60,17 +63,23 @@
           background-color: rgb(70, 255, 37);
         }
       }
-
     }
 
     &.left {
       left: 328px;
-      bottom: 112px;
+      bottom: 90px;
+
+      .combo {
+        left: -50px;
+      }
     }
 
     &.right {
       right: 368px;
-      bottom: 112px;
+      bottom: 90px;
+      .combo {
+        right: -50px;
+      }
     }
 
     &.flip {
@@ -109,7 +118,5 @@
         }
       }
     }
-
-
   }
 }

@@ -11,9 +11,7 @@ import { Player } from '../player.class';
 export class BattleComponent implements OnInit, OnDestroy {
   player1: Player;
   player2: Player;
-  arrow:boolean
-
-
+  arrow: boolean;
 
   constructor(private battleService: BattleService, router: Router) {
     this.player1 = battleService.players[0];
@@ -21,37 +19,33 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.arrow = battleService.withArrows;
 
     if (!this.player1.hero || !this.player2.hero) {
-      router.navigate(['/arena'])
+      router.navigate(['/arena']);
     }
 
-    this.setupPlayers()
-
+    this.setupPlayers();
   }
 
-  statsPlayer(player:Player) {
+  statsPlayer(player: Player) {
     player.health = (player.hero.health + player.hero.weapon.health) * 2;
     player.speed = player.hero.speed + player.hero.weapon.speed;
     player.damage = player.hero.damage + player.hero.weapon.damage;
     player.dodge = player.hero.dodge + player.hero.weapon.dodge;
 
-    if(player.health <= 0 ) player.health = 2;
-    if(player.speed <= 0 ) player.speed = 1;
-    if(player.dodge <= 0 ) player.dodge = 1;
-    if(player.damage <= 0 ) player.damage = 1;
-
+    if (player.health <= 0) player.health = 2;
+    if (player.speed <= 0) player.speed = 1;
+    if (player.dodge <= 0) player.dodge = 1;
+    if (player.damage <= 0) player.damage = 1;
   }
 
-
-  setupPlayers () {
+  setupPlayers() {
     for (let player of [this.player1, this.player2]) {
       this.statsPlayer(player);
-      player.cooldown = 1
-      player.startInterval()
+      player.cooldown = 1;
+      player.startInterval();
     }
-
   }
 
-  ngOnInit (): void {
+  ngOnInit(): void {
     document.addEventListener('keydown', this.handleInputs);
   }
   ngOnDestroy (): void {
@@ -71,16 +65,17 @@ export class BattleComponent implements OnInit, OnDestroy {
       for (const key of player.controls) {
         if (event.code === key) {
           player.onKeyDown(key);
-          if(player.successCombo) {
-              var attacked = (player === this.player1) ? this.player2 : this.player1;
-              if( player.attaque(attacked) ) {
-                this.winner(player);
-              }
+          if (player.successCombo) {
+            var attacked =
+              player === this.player1 ? this.player2 : this.player1;
+            if (player.attaque(attacked)) {
+              this.winner(player);
+            }
           }
         }
       }
     }
-  }
+  };
 
   winner(player: Player) {
     var windiv = document.getElementById('winner');
@@ -88,6 +83,4 @@ export class BattleComponent implements OnInit, OnDestroy {
     windiv.style.visibility = 'visible';
     this.removeListeners();
   }
-
-
 }

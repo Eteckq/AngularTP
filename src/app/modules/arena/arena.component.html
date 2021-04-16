@@ -14,7 +14,10 @@
     ></app-hero-selector>
   </div>
 </div>
-<label class="startBtn">
-  <input class="keyBtn" type="checkbox" [(ngModel)]="withArrow" data-toggle="toggle">Use Arrows
-</label>
-<div class="startBtn" (click)="startGame()">START</div>
+<div class="bottom">
+  <div class="startBtn" (click)="startGame()">START</div>
+  <div>
+    <input class="keyBtn" id="keyBtn" type="checkbox" [(ngModel)]="withArrow" />
+    <label for="keyBtn"> Use Arrows instead of Keys names (easy mode) </label>
+  </div>
+</div>

@@ -1,80 +1,116 @@
 <div class="arena">
-
-    <!-- P1 -->
-    <div>
-        <!-- Health Bar -->
-        <div class="healthbar left">
-            {{player1.health}} HEALTH
-        </div>
-        <div id="winner"></div>
-        <!-- Character -->
-        <div>
-            <div class="display left">
-                <!-- Combo Display -->
-                <div class="combo">
-                    <div *ngFor="let key of player1.keyCombo; index as i">
-                        <p class="key"
-                            [ngClass]="{'highlight': i < player1.currentKeyCombo, 'red': player1.cooldown > 0, 'green': player1.successCombo}" *ngIf="arrow">
-                             {{key | arrowTranslate}}</p>
-                      <p class="key"
-                         [ngClass]="{'highlight': i < player1.currentKeyCombo, 'red': player1.cooldown > 0, 'green': player1.successCombo}" *ngIf="!arrow">
-                        {{key | keyTranslate}}</p>
-                    </div>
-                </div>
-                <!-- Skin -->
-                <div class="skinBox">
-                    <div class="skin">
-                        <!-- Head -->
-                        <img class="head" src="./assets/Head.png" height="140px" width="140px" />
-                        <!-- Body -->
-                        <img class="body" src="./assets/Armor/{{ player1.hero.armorSkin }}.png" height="200px"
-                            width="200px" />
-                        <!-- Weapon -->
-                        <img *ngIf="player1.hero.weapon" class="weapon"
-                            src="./assets/Weapon/{{ player1.hero.weapon.skin }}.png" height="84px" width="136px" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
+  <!-- P1 -->
+  <div>
+    <!-- Health Bar -->
+    <div class="healthbar left">
+      <app-health-bar></app-health-bar>
     </div>
+    <div id="winner"></div>
 
-    <!-- P2 -->
+
+    <!-- Character -->
     <div>
-        <!-- Health Bar -->
-        <div class="healthbar right">
-          {{player2.health}} HEALTH
+      <div class="display left">
+        <!-- Combo Display -->
+        <div class="combo">
+          <div *ngFor="let key of player1.keyCombo; index as i">
+            <p
+              class="key"
+              [ngClass]="{
+                highlight: i < player1.currentKeyCombo,
+                red: player1.cooldown > 0,
+                green: player1.currentKeyCombo === player1.keyCombo.length
+              }"
+            >
+              <span *ngIf="arrow">{{ key | arrowTranslate }}</span>
+              <span *ngIf="!arrow">{{ key | keyTranslate }}</span>
+            </p>
+          </div>
         </div>
-        <!-- Character -->
-        <div>
-            <div class="display right flip">
-                <!-- Combo Display -->
-                <div class="combo">
-                    <div *ngFor="let key of player2.keyCombo; index as i">
-                      <p class="key"
-                         [ngClass]="{'highlight': i < player2.currentKeyCombo, 'red': player2.cooldown > 0, 'green': player2.successCombo}" *ngIf="arrow">
-                        {{key | arrowTranslate}}</p>
-                      <p class="key"
-                         [ngClass]="{'highlight': i < player2.currentKeyCombo, 'red': player2.cooldown > 0, 'green': player2.successCombo}" *ngIf="!arrow">
-                        {{key | keyTranslate}}</p>
-                    </div>
-                </div>
-                <!-- Skin -->
-                <div class="skinBox">
-                    <div class="skin">
-                        <!-- Head -->
-                        <img class="head" src="./assets/Head.png" height="140px" width="140px" />
-                        <!-- Body -->
-                        <img class="body" src="./assets/Armor/{{ player2.hero.armorSkin }}.png" height="200px"
-                            width="200px" />
-                        <!-- Weapon -->
-                        <img *ngIf="player2.hero.weapon" class="weapon"
-                            src="./assets/Weapon/{{ player2.hero.weapon.skin }}.png" height="84px" width="136px" />
-                    </div>
-                </div>
-            </div>
+        <!-- Skin -->
+        <div class="skinBox">
+          <div class="skin">
+            <!-- Head -->
+            <img
+              class="head"
+              src="./assets/Head.png"
+              height="140px"
+              width="140px"
+            />
+            <!-- Body -->
+            <img
+              class="body"
+              src="./assets/Armor/{{ player1.hero.armorSkin }}.png"
+              height="200px"
+              width="200px"
+            />
+            <!-- Weapon -->
+            <img
+              *ngIf="player1.hero.weapon"
+              class="weapon"
+              src="./assets/Weapon/{{ player1.hero.weapon.skin }}.png"
+              height="84px"
+              width="136px"
+            />
+          </div>
         </div>
-
+      </div>
     </div>
+  </div>
 
+  <!-- P2 -->
+  <div>
+    <!-- Health Bar -->
+    <div class="healthbar right">
+      <app-health-bar></app-health-bar>
+    </div>
+    <!-- Character -->
+    <div>
+      <div class="display right flip">
+        <!-- Combo Display -->
+        <div class="combo">
+          <div *ngFor="let key of player2.keyCombo; index as i">
+            <p
+              class="key"
+              [ngClass]="{
+                highlight: i < player2.currentKeyCombo,
+                red: player2.cooldown > 0,
+                green: player2.currentKeyCombo === player2.keyCombo.length
+              }"
+            >
+              <span *ngIf="arrow">{{ key | arrowTranslate }}</span>
+              <span *ngIf="!arrow">{{ key | keyTranslate }}</span>
+            </p>
+          </div>
+        </div>
+        <!-- Skin -->
+        <div class="skinBox">
+          <div class="skin">
+            <!-- Head -->
+            <img
+              class="head"
+              src="./assets/Head.png"
+              height="140px"
+              width="140px"
+            />
+            <!-- Body -->
+            <img
+              class="body"
+              src="./assets/Armor/{{ player2.hero.armorSkin }}.png"
+              height="200px"
+              width="200px"
+            />
+            <!-- Weapon -->
+            <img
+              *ngIf="player2.hero.weapon"
+              class="weapon"
+              src="./assets/Weapon/{{ player2.hero.weapon.skin }}.png"
+              height="84px"
+              width="136px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
