@@ -77,11 +77,18 @@ export class Player {
   }
 
   attaque(heroAttaquer:Player) {
-
+    this.successCombo = false;
     if(Math.random() * 100 > heroAttaquer.dodge) {
       heroAttaquer.health -= this.damage;
+      return this.damage;
+    } else {
+      return 0;
     }
-    this.successCombo = false;
-    return heroAttaquer.health <= 0;
+
+
+  }
+
+  isDead() {
+    return this.health <= 0;
   }
 }

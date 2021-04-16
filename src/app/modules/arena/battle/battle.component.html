@@ -1,9 +1,10 @@
-<div class="arena">
+<div id="arena">
   <!-- P1 -->
   <div>
     <!-- Health Bar -->
     <div class="healthbar left">
       <app-health-bar></app-health-bar>
+      {{player1.health}}
     </div>
     <div id="winner"></div>
 
@@ -63,6 +64,7 @@
     <!-- Health Bar -->
     <div class="healthbar right">
       <app-health-bar></app-health-bar>
+      {{player2.health}}
     </div>
     <!-- Character -->
     <div>
