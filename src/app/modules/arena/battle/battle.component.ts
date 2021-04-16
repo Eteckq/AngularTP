@@ -37,6 +37,8 @@ export class BattleComponent implements OnInit, OnDestroy {
     if (player.speed <= 0) player.speed = 1;
     if (player.dodge <= 0) player.dodge = 1;
     if (player.damage <= 0) player.damage = 1;
+
+    player.maxHealth = player.health;
   }
 
   setupPlayers() {
@@ -50,13 +52,12 @@ export class BattleComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     document.addEventListener('keydown', this.handleInputs);
   }
-  ngOnDestroy (): void {
+  ngOnDestroy(): void {
     this.removeListeners();
   }
 
-  removeListeners () {
-    document.removeEventListener('keydown', this.handleInputs)
-
+  removeListeners() {
+    document.removeEventListener('keydown', this.handleInputs);
   }
 
   handleInputs = (event) => {

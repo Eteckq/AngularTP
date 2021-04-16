@@ -3,11 +3,12 @@
   <div>
     <!-- Health Bar -->
     <div class="healthbar left">
-      <app-health-bar></app-health-bar>
-      {{player1.health}}
+      <app-health-bar
+        [health]="player1.health"
+        [maxHealth]="player1.maxHealth"
+      ></app-health-bar>
     </div>
     <div id="winner"></div>
-
 
     <!-- Character -->
     <div>
@@ -65,8 +66,10 @@
   <div>
     <!-- Health Bar -->
     <div class="healthbar right">
-      <app-health-bar></app-health-bar>
-      {{player2.health}}
+      <app-health-bar
+        [health]="player2.health"
+        [maxHealth]="player2.maxHealth"
+      ></app-health-bar>
     </div>
     <!-- Character -->
     <div>

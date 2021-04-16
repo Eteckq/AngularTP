@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 
@@ -19,30 +20,47 @@ export class HealthBarComponent {
   @ViewChild('hit') hit: ElementRef;
 
   @Input()
-  health: number;
+  health: number = 100;
+
+  @Input()
+  maxHealth: number = 100;
 
   constructor() {}
 
-  ngAfterViewInit() {
-    console.log(this.bar);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.maxHealth) {
+      return;
+    }
+    if (changes.health) {
+      this.applyDamage(
+        changes.health.previousValue - changes.health.currentValue
+      );
+    }
+
+    if (this.health < 0) {
+      this.health = 0;
+    }
   }
 
   public applyDamage(amout: number) {
-    var total = this.hit.nativeElement.data('total'),
-      value = this.hit.nativeElement.data('value');
+    var total = this.healthBar.nativeElement.dataset['total'],
+      value = this.healthBar.nativeElement.dataset['value'];
 
     var newValue = value - amout;
+    if (newValue < 0) {
+      newValue = 0;
+    }
     // calculate the percentage of the total width
     var barWidth = (newValue / total) * 100;
     var hitWidth = (amout / value) * 100 + '%';
 
     // show hit bar and set the width
-    this.hit.nativeElement.css('width', hitWidth);
-    this.healthBar.nativeElement.data('value', newValue);
+    this.hit.nativeElement.style.width = hitWidth;
+    this.healthBar.nativeElement.dataset['value'] = newValue;
 
-    setTimeout(function () {
-      this.hit.nativeElement.css({ width: '0' });
-      this.bar.nativeElement.css('width', barWidth + '%');
-    }, 500);
+    setTimeout(() => {
+      this.hit.nativeElement.style.width = '0';
+      this.bar.nativeElement.style.width = barWidth + '%';
+    }, 300);
   }
 }
