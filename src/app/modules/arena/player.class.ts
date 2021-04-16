@@ -78,12 +78,15 @@ export class Player {
 
   attaque(heroAttaquer:Player) {
     this.successCombo = false;
+    var damage;
     if(Math.random() * 100 > heroAttaquer.dodge) {
-      heroAttaquer.health -= this.damage;
-      return this.damage;
+      damage = this.damage;
+      heroAttaquer.health -= damage;
+
     } else {
-      return 0;
+      damage = 'miss';
     }
+    return {damage: damage, attacked: heroAttaquer};
 
 
   }

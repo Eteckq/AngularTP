@@ -12,6 +12,8 @@
     <!-- Character -->
     <div>
       <div class="display left">
+        <!-- Damage Display -->
+        <div class="damage" id="damage1"><p>{{damage1}}</p></div>
         <!-- Combo Display -->
         <div class="combo">
           <div *ngFor="let key of player1.keyCombo; index as i">
@@ -69,6 +71,8 @@
     <!-- Character -->
     <div>
       <div class="display right flip">
+        <!-- Damage Display -->
+        <div class="damage" id="damage2"><p>{{damage2}}</p></div>
         <!-- Combo Display -->
         <div class="combo">
           <div *ngFor="let key of player2.keyCombo; index as i">

@@ -12,7 +12,9 @@ export class BattleComponent implements OnInit, OnDestroy {
   player1: Player;
   player2: Player;
   arrow: boolean;
-
+  interval;
+  damage1: any;
+  damage2: any;
   constructor(private battleService: BattleService, router: Router) {
     this.player1 = battleService.players[0];
     this.player2 = battleService.players[1];
@@ -83,9 +85,38 @@ export class BattleComponent implements OnInit, OnDestroy {
     windiv.innerText += 'The winner is : ' + player.hero.name;
     windiv.style.visibility = 'visible';
     this.removeListeners();
+    document.getElementById('arena').style.opacity = '50%';
   }
 
-  displayDamage(damageDealt) {
+  displayDamage(attackResult) {
+    console.log('display');
+    var id = (attackResult.attacked === this.player1 ) ? 2 : 1;
+    var divDamage = document.getElementById('damage' + id);
 
+    if(id ==1) {
+      this.damage1 = attackResult.damage;
+    } else {
+      this.damage2 = attackResult.damage;
+    }
+    divDamage.style.visibility = 'visible';
+    this.startInterval(attackResult.attacked);
+  }
+
+  hideDamage(attacked) {
+    console.log('hide');
+    var id = (attacked === this.player1 ) ? 2 : 1;
+    var divDamage = document.getElementById('damage' + id);
+    divDamage.style.visibility = 'hidden';
+  }
+
+  startInterval (attacked) {
+    var cooldown = 0;
+    this.interval = setInterval(() => {
+      cooldown++;
+      if (cooldown > 20) {
+        clearInterval(this.interval);
+        this.hideDamage(attacked);
+      }
+    }, 100)
   }
 }
