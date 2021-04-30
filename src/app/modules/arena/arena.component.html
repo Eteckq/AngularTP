@@ -2,16 +2,12 @@
 <div class="playerBoxs">
   <!-- Player 1 -->
   <div class="playerBox">
-    <app-hero-selector
-      (validateEvent)="selectP1Hero($event)"
-    ></app-hero-selector>
+    <app-hero-selector (validateEvent)="selectP1Hero($event)"></app-hero-selector>
   </div>
   <div class="vs">VS</div>
   <!-- Player 2 -->
   <div class="playerBox">
-    <app-hero-selector
-      (validateEvent)="selectP2Hero($event)"
-    ></app-hero-selector>
+    <app-hero-selector (validateEvent)="selectP2Hero($event)"></app-hero-selector>
   </div>
 </div>
 <div class="bottom">
@@ -19,5 +15,27 @@
   <div>
     <input class="keyBtn" id="keyBtn" type="checkbox" [(ngModel)]="withArrow" />
     <label for="keyBtn"> Use Arrows instead of Keys names (easy mode) </label>
+  </div>
+  <div class="playerKeys">
+    <div class="keys">
+      <div class="lineKeys">
+        <div class="key">Z</div>
+      </div>
+      <div class="lineKeys">
+        <div class="key">Q</div>
+        <div class="key">S</div>
+        <div class="key">D</div>
+      </div>
+    </div>
+    <div class="keys">
+      <div class="lineKeys">
+        <div class="key">8</div>
+      </div>
+      <div class="lineKeys">
+        <div class="key">4</div>
+        <div class="key">5</div>
+        <div class="key">6</div>
+      </div>
+    </div>
   </div>
 </div>
