@@ -21,6 +21,7 @@
       right: 0;
     }
   }
+
   #winner {
     color: black;
     position: absolute;
@@ -34,9 +35,10 @@
     position: absolute;
 
     .damage {
-      visibility: hidden;
+      transition-duration: 500ms;
+      opacity: 0;
       position: absolute;
-      top: -150px;
+      top: 180px;
       left: 100px;
       background-color: red;
       border-radius: 30px;
@@ -44,12 +46,14 @@
       width: 60px;
       text-align: center;
       vertical-align: center;
+
       p {
         margin-top: 20px;
         font-size: 25px;
         font-weight: bold;
       }
     }
+
     .combo {
       position: absolute;
       top: -50px;
@@ -94,6 +98,7 @@
     &.right {
       right: 368px;
       bottom: 90px;
+
       .combo {
         right: -50px;
       }

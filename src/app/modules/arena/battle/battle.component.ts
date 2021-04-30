@@ -12,10 +12,9 @@ export class BattleComponent implements OnInit, OnDestroy {
   player1: Player;
   player2: Player;
   arrow: boolean;
-  interval;
   damage1: any;
   damage2: any;
-  constructor(private battleService: BattleService, router: Router) {
+  constructor(private battleService: BattleService, private router: Router) {
     this.player1 = battleService.players[0];
     this.player2 = battleService.players[1];
     this.arrow = battleService.withArrows;
@@ -27,7 +26,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.setupPlayers();
   }
 
-  statsPlayer(player: Player) {
+  statsPlayer (player: Player) {
     player.health = (player.hero.health + player.hero.weapon.health) * 5;
     player.speed = player.hero.speed + player.hero.weapon.speed;
     player.damage = player.hero.damage + player.hero.weapon.damage;
@@ -41,7 +40,7 @@ export class BattleComponent implements OnInit, OnDestroy {
     player.maxHealth = player.health;
   }
 
-  setupPlayers() {
+  setupPlayers () {
     for (let player of [this.player1, this.player2]) {
       this.statsPlayer(player);
       player.cooldown = 1;
@@ -49,14 +48,14 @@ export class BattleComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     document.addEventListener('keydown', this.handleInputs);
   }
-  ngOnDestroy(): void {
+  ngOnDestroy (): void {
     this.removeListeners();
   }
 
-  removeListeners() {
+  removeListeners () {
     document.removeEventListener('keydown', this.handleInputs);
   }
 
@@ -81,43 +80,49 @@ export class BattleComponent implements OnInit, OnDestroy {
     }
   };
 
-  winner(player: Player) {
+  winner (player: Player) {
     var windiv = document.getElementById('winner');
     windiv.innerText += 'The winner is : ' + player.hero.name;
     windiv.style.visibility = 'visible';
     this.removeListeners();
     document.getElementById('arena').style.opacity = '50%';
+
+    setTimeout(() => {
+      this.router.navigate(['/arena']);
+    }, 2000);
   }
 
-  displayDamage(attackResult) {
+  displayDamage (attackResult) {
     console.log('display');
-    var id = (attackResult.attacked === this.player1 ) ? 2 : 1;
+    var id = (attackResult.attacked === this.player1) ? 2 : 1;
     var divDamage = document.getElementById('damage' + id);
 
-    if(id ==1) {
+    if (id == 1) {
       this.damage1 = attackResult.damage;
     } else {
       this.damage2 = attackResult.damage;
     }
-    divDamage.style.visibility = 'visible';
+    divDamage.style.opacity = "1";
+    divDamage.style.top = "-100px";
     this.startInterval(attackResult.attacked);
   }
 
-  hideDamage(attacked) {
+  hideDamage (attacked) {
     console.log('hide');
-    var id = (attacked === this.player1 ) ? 2 : 1;
+    var id = (attacked === this.player1) ? 2 : 1;
     var divDamage = document.getElementById('damage' + id);
-    divDamage.style.visibility = 'hidden';
+    divDamage.style.opacity = "0";
+    divDamage.style.top = "-180px";
   }
 
   startInterval (attacked) {
-    var cooldown = 0;
-    this.interval = setInterval(() => {
+    let cooldown = 0;
+    let interval = setInterval(() => {
       cooldown++;
       if (cooldown > 20) {
-        clearInterval(this.interval);
+        clearInterval(interval);
         this.hideDamage(attacked);
       }
-    }, 100)
+    }, 50)
   }
 }
