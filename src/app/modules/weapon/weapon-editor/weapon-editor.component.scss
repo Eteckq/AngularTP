@@ -5,8 +5,31 @@
   }
 
   .arrows {
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 136px;
+
     span {
+      font-size: 2em;
       cursor: pointer;
     }
   }
+}
+
+.editor {
+  font-size: 1.5em;
+  padding: 0 20px;
+
+  .middle {
+    display: flex;
+
+    .right {
+      margin-left: 150px;
+    }
+  }
+}
+
+div {
+  margin-top: 25px;
 }
